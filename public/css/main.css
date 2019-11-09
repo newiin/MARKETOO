@@ -2,290 +2,295 @@
 /* c8c8c8 */
 /* 1c1c1b */
 :root {
-	--green-color: #8bc34a;
+  --green-color: #8bc34a;
 }
 html,
 body {
-	width: 100%;
+  width: 100%;
 }
 * {
-	font-family: 'Open Sans', sans-serif;
-	color: #1c1c1b;
-	font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  color: #1c1c1b;
+  font-weight: 300;
 }
 /* header  */
 header {
-	padding: 25px 0;
+  padding: 25px 0;
 }
 .action {
-	margin-left: 215px;
-	height: 45px;
+  margin-left: 215px;
+  height: 45px;
 }
 .right {
-	height: 45px;
+  height: 45px;
 }
 .right .button {
-	margin-right: 16px !important;
+  margin-right: 16px !important;
 }
 .menu .like,
 .menu .shopping_cart {
-	background-color: transparent !important;
+  background-color: transparent !important;
 }
 .search input {
-	width: 100%;
+  width: 100%;
 }
 .search .button {
-	background: var(--green-color);
-	color: #fff;
+  background: var(--green-color);
+  color: #fff;
 }
 .search .button:hover {
-	background: var(--green-color);
+  background: var(--green-color);
 }
 
 /* End header */
 /* login and register */
 #login_register {
-	padding: 65px 45px;
-	position: relative;
-	display: none;
+  padding: 65px 45px;
+  position: relative;
+  display: none;
+}
+#register_seller {
+  padding: 0;
+  position: relative;
+  display: none;
 }
 .login_btn {
-	background-color: var(--green-color) !important;
-	color: #fff !important;
+  background-color: var(--green-color) !important;
+  color: #fff !important;
 }
 #close_icon {
-	position: absolute;
-	top: 5%;
-	right: 5%;
+  position: absolute;
+  top: 5%;
+  right: 5%;
 }
 .forgot_pass {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .forgot_pass a {
-	margin-left: 45%;
-	font-size: 11px;
+  margin-left: 45%;
+  font-size: 11px;
 }
 
 .or {
-	margin: 15px 0;
+  margin: 15px 0;
 }
 .social_button {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 .social_button i {
-	color: #fff !important;
+  color: #fff !important;
 }
 
 /* hero image */
 .hero_image {
-	padding: 0 !important;
+  padding: 0 !important;
 }
 .hero_image .banner {
-	height: 400px;
-	width: 100% !important;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url('../images/team.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
+  height: 400px;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../images/team.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 .hero_image .banner p {
-	font-size: 36px;
-	text-align: center;
-	word-spacing: 5px;
-	color: #fff;
+  font-size: 36px;
+  text-align: center;
+  word-spacing: 5px;
+  color: #fff;
 }
 .hero_image .banner .button {
-	background: var(--green-color);
-	width: auto;
-	color: #fff !important;
+  background: var(--green-color);
+  width: auto;
+  color: #fff !important;
 }
 .hero_image .banner button:hover {
-	background: var(--green-color);
+  background: var(--green-color);
 }
 .hero_image .banner .button .content {
-	color: #fff !important;
+  color: #fff !important;
 }
 .swiper-container {
-	position: relative;
-	top: -88px;
-	height: 200px;
-	z-index: 100;
-	background-color: white;
-	margin: 0 150px;
-	box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
-	-webkit-box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
-	-moz-box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
+  position: relative;
+  top: -88px;
+  height: 200px;
+  z-index: 100;
+  background-color: white;
+  margin: 0 150px;
+  box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
+  -webkit-box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
+  -moz-box-shadow: 2px 7px 5px 1px rgba(207, 207, 214, 0.75);
 }
 .swiper-pagination-bullet {
-	background-color: black !important;
+  background-color: black !important;
 }
 .swiper-button-next,
 .swiper-button-prev {
-	background-image: none !important;
+  background-image: none !important;
 }
 .swiper-button-next i,
 .swiper-button-prev i {
-	font-size: 32px !important;
+  font-size: 32px !important;
 }
 /* end hero image */
 /* Top seller section */
 #top_seller {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .top_seller_wrapper {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .top_seller {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 39px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 39px;
 }
 .top_seller_wrapper .add_to_class:hover {
-	background-color: var(--green-color) !important;
-	border: none;
-	color: #fff;
+  background-color: var(--green-color) !important;
+  border: none;
+  color: #fff;
 }
 .top_seller_wrapper .button {
-	background-color: transparent;
-	border: 2px solid #fff;
-	color: #fff;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
 }
 .section_heading {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .section_heading span {
-	color: var(--green-color);
+  color: var(--green-color);
 }
 .top_seller_wrapper .category {
-	color: #c8c8c8;
-	text-transform: capitalize;
+  color: #c8c8c8;
+  text-transform: capitalize;
 }
 .top_seller_wrapper .title {
-	color: rgb(15, 15, 15);
-	text-transform: capitalize;
-	font-size: 18px;
-	margin-bottom: 15px;
+  color: rgb(15, 15, 15);
+  text-transform: capitalize;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 .top_seller_wrapper .title i {
-	float: right;
-	color: #c8c8c8;
+  float: right;
+  color: #c8c8c8;
 }
 .top_seller_wrapper .price {
-	color: var(--green-color);
-	font-size: 27px;
+  color: var(--green-color);
+  font-size: 27px;
 }
 .explore_more {
-	text-align: center;
-	margin-top: 25px;
-	margin-bottom: 45px;
-	font-size: 14px;
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 45px;
+  font-size: 14px;
 }
 /* why become seller section */
 #why_become_seller {
-	margin: 25px 0;
-	padding: 0;
+  margin: 25px 0;
+  padding: 0;
 }
 
 #why_become_seller .column h1 {
-	text-align: start;
-	color: var(--green-color);
-	font-size: 45px;
+  text-align: start;
+  color: var(--green-color);
+  font-size: 45px;
 }
 #why_become_seller .column img {
-	max-width: 70%;
+  max-width: 70%;
 }
 #why_become_seller .button {
-	width: 190px;
-	margin-top: 52px;
-	height: 45px;
-	background-color: var(--green-color);
-	color: #fff;
+  width: 190px;
+  margin-top: 52px;
+  height: 45px;
+  background-color: var(--green-color);
+  color: #fff;
 }
 /* features products */
 .feature_product_wrapper {
-	margin-top: 28px;
+  margin-top: 28px;
 }
 /* category page */
 #category {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .category_wrapper {
-	margin: 0;
+  margin: 0;
 }
 .category_wrapper .ui.breadcrumb {
-	margin-bottom: 28px;
-	padding-left: 7px;
+  margin-bottom: 28px;
+  padding-left: 7px;
 }
 
 .category_content {
-	display: flex;
+  display: flex;
 }
 .category_content .add_to_card {
-	background-color: var(--green-color);
-	color: #fff;
+  background-color: var(--green-color);
+  color: #fff;
 }
 .category_content .add_to_card:hover {
-	color: #fff;
-	background-color: var(--green-color);
+  color: #fff;
+  background-color: var(--green-color);
 }
 .pagination_wrapper {
-	text-align: center;
-	margin: 28px 0;
+  text-align: center;
+  margin: 28px 0;
 }
 .pagination_wrapper .active {
-	background-color: var(--green-color) !important;
-	color: #fff !important;
+  background-color: var(--green-color) !important;
+  color: #fff !important;
 }
 .pagination_wrapper .item:hover {
-	background-color: var(--green-color) !important;
-	color: #fff !important;
+  background-color: var(--green-color) !important;
+  color: #fff !important;
 }
 /* End category page */
 
 /* Details page */
 #details_container {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 /* End page */
 /* footer */
 .footer_wrapper {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 138px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 138px;
 }
 
 footer .vertical {
-	text-align: start;
+  text-align: start;
 }
 footer .vertical .header {
-	font-size: 22px;
+  font-size: 22px;
 }
 footer .vertical i.facebook {
-	color: #3b5998;
+  color: #3b5998;
 }
 footer .vertical i.youtube {
-	color: #c4302b;
+  color: #c4302b;
 }
 footer .vertical i.twitter {
-	color: #1da1f2;
+  color: #1da1f2;
 }
 footer .vertical i.instagram {
-	color: #c32aa3;
+  color: #c32aa3;
 }
 footer .vertical i.google {
-	color: #dd4b39;
+  color: #dd4b39;
 }
 footer .copyright {
-	text-align: center;
-	margin-bottom: 52px;
+  text-align: center;
+  margin-bottom: 52px;
 }

@@ -1,4 +1,5 @@
 <footer>
+{{ csrfField() }}
     <div class="ui container">
         <div class="footer_wrapper">
             <div class="column">
@@ -13,6 +14,7 @@
                     <a href="" class="item">Artisan</a>
                 </div>
             </div>
+          
             <div class="column">
                 <div class="ui vertical text menu">
                     <div class="header item">
@@ -42,7 +44,7 @@
                     <div class="header item">
                         Join the Comunity
                     </div>
-                    <a href="" class="item">Retailers</a>
+                    <a href="/seller/start?become=true" class="item">Become a Seller</a>
                     <a href="" class="item"> Interios</a>
                     <a href="" class="item"> Product Designers</a>
                     <a href="" class="item">Wholesaler</a>
@@ -112,7 +114,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-{{ script('js/main.js') }}
+{{ script('/js/main.js') }}
 </body>
 
 </html>

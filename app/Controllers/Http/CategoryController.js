@@ -6,7 +6,6 @@ const User = use('App/Models/User');
 class CategoryController {
   async index({ response, request, params }) {
     const { slug } = params;
-    console.log(request.cart());
     try {
       const category = await Category.findBy('slug', slug);
 
@@ -17,13 +16,14 @@ class CategoryController {
   }
 
   async test({ response, request, params }) {
-    try {
-      const user = await User.findBy('id', 1);
-      const seller = await user.profile().fetch();
-      response.send({ seller });
-    } catch (error) {
-      console.log(error);
-    }
+    response.status(200).send('ok');
+    // try {
+    //   const user = await User.findBy('id', 1);
+    //   const seller = await user.profile().fetch();
+    //   response.send({ seller });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 }
 

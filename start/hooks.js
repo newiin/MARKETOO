@@ -24,6 +24,6 @@ hooks.after.providersBooted(() => {
     return [...Array(size).keys()].map(i => i + start);
   });
   Request.macro('cart', function() {
-    return this.cookie('cart', 0);
+    return this.cookie('cart', []);
   });
 });

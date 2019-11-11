@@ -1,0 +1,83 @@
+@layout('layout.dashboard_layout')
+
+@section('content')
+<div class="seller_product_wrapper">
+    <div class="ui breadcrumb">
+        <a class="section">All</a>
+        <div class="divider"> | </div>
+        <a class="section" href="{{route('seller.product.create')}}">Add new product</a>
+        <div class="divider"> | </div>
+        <a class="section">Pending product</a>
+        <div class="divider"> | </div>
+        <a class="section">Store</a>
+
+    </div>
+
+
+
+    <div class="ui four cards">
+        <div class="ui card card_product">
+            <div class="content">
+                <div class="header">Total Product</div>
+                <div class="meta">
+                    <h3>425</h3>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Total Sale</div>
+                <div class="meta">
+                    <span>452</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Active Product</div>
+                <div class="meta">
+                    <span>258</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Pending Product</div>
+                <div class="meta">
+                    <span>425</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+    <form method="post" id="dropzoneFrom" action="/user/dashboard/product/create/image" class="ui form dropzone"
+        enctype="multipart/form-data">
+
+        <div class="fallback">
+            <input type="file" name="file[]" multiple />
+        </div>
+
+        <button type="submit" class="ui primary button" id="submit_image">
+            Upload image
+        </button>
+
+
+    </form>
+
+
+
+
+
+</div>
+
+
+@endsection

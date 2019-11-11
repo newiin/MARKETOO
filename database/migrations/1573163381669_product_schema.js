@@ -1,34 +1,34 @@
-'use strict';
+"use strict";
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema');
+const Schema = use("Schema");
 
 class ProductSchema extends Schema {
   up() {
-    this.create('products', table => {
+    this.create("products", table => {
       table.increments();
       table
-        .integer('subcategory_id')
+        .integer("subcategory_id")
         .unsigned()
-        .references('id')
-        .inTable('subcategories');
+        .references("id")
+        .inTable("subcategories");
       table
-        .integer('seller_id')
+        .integer("seller_id")
         .unsigned()
-        .references('id')
-        .inTable('sellers');
-      table.string('title', 225).notNullable();
-      table.string('description', 225).notNullable();
-      table.string('price', 225).notNullable();
-      table.integer('quantity').notNullable();
-      table.boolean('is_available').defaultTo(true);
-      table.string('picture', 225).notNullable();
+        .references("id")
+        .inTable("sellers");
+      table.string("title", 225).notNullable();
+      table.string("description", 225).notNullable();
+      table.string("price", 225).notNullable();
+      table.integer("quantity").notNullable();
+      table.boolean("is_available").defaultTo(true);
+      table.string("picture", 225).notNullable();
       table.timestamps();
     });
   }
 
   down() {
-    this.drop('products');
+    this.drop("products");
   }
 }
 

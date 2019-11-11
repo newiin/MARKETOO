@@ -151,85 +151,54 @@
 		<div class="ui card" id="login_register">
 			
 					<i class="close icon" id="close_icon"></i>
-					<div class="login_register_wrapper">
-					<form class="ui form" method="post" action="/seller/login" >
-						<div class="field">
-							<input type="email" name="email" placeholder="Email" required />
+				
+					<form class="ui form" method="post" action="/seller/register" >
+					    <div class="field {{hasErrorFor('email')?"error":""}}">
+							<input type="email" name="email" placeholder="Email" />
+							
 						</div>
-						<div class="field">
+						  @if(hasErrorFor('email'))
+							<span class="ui mini pointing red basic label">
+							{{ getErrorFor('email') }}
+							</span>
+							@endif
+						
+						
+						
+						<div class="field {{hasErrorFor('password')?"error":""}}">
 							<input
 								type="password"
 								name="password"
 								placeholder="password"
-								required
 							/>
 						</div>
-						<div class="forgot_pass">
-								<a href="#">Forgot Password</a>
-						</div>
-						
-						<div>
-							<button class="ui tiny button login_btn" type="submit">Login</button>
-							<button class="ui tiny button" type="submit">Login as Guest</button>
+						@if(hasErrorFor('password'))
+						<div class="ui mini pointing red basic label error label">
+                         {{ getErrorFor('password') }}
+                         </div>
+						@endif
+
+							<button class="ui tiny button login_btn" type="submit">Register</button>
 						</div>
 					</form>
-					<span class="or">Or</span>
-					<span>Sign-up With</span>
-					<p class="social_button">
-						<button class="ui mini facebook button">
-							<i class="facebook icon f"></i>
-						</button>
-		
-						<button class="ui mini google plus button">
-							<i class="google plus g icon"></i>
-						</button>
-						<button class="ui mini instagram button">
-							<i class="instagram icon"></i>
-						</button>
-					</p>	
-			</div>
-			
-        </div>
-		
-		
-			
-			
-				<form class="ui form" id="register_seller" method="post" action="/seller/register">
-					<div class="field">
-						<input type="email" name="email" placeholder="Email" />
-					</div>
-					{{ elIf('<span id="my_error">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
-					<div class="field">
-						<input
-							type="password"
-							name="password"
-							placeholder="password"
-						
-						/>
-					</div>
-					{{ elIf('<span>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
-					@if(hasErrorFor('email'))
-				
-				<script>
+					
+		</div>
+		@if(hasErrorFor())
+		 <script>
 
- $(document).ready(function () {
-	
-    const html = $('#register_seller');
-    html.replaceWith(html);
-	$('#login_register')
-      .modal({
-        centered: true,
-        closable: false
-      })
-      .modal('show');
-  
- });
-				</script>
+			$(document).ready(function () {
+				
+				$('#login_register')
+				.modal({
+					centered: true,
+					closable: false
+				})
+				.modal('show');
 			
-		
-			  
-			@endif
-					<button class="ui tiny button" type="submit">Login as Guest</button>
+			});
+	     </script>
+		@endif
+				<button class="ui tiny button" type="submit">Login as Guest</button>
 					
 				</form>
 			

@@ -1,26 +1,24 @@
-'use strict';
-const { validate } = use('Validator');
+"use strict";
+const { validate } = use("Validator");
+const User = use("App/Models/User");
+const Seller = use("App/Models/Seller");
 class RegisterController {
   async index({ request, response, view }) {
-    return view.render('seller.start');
+    return view.render("seller.start");
   }
 
-  async create({ request, response, session, view }) {}
-
   async store({ request, session, view, response }) {
-    console.log(request.all());
+    const { email, password } = request.all();
 
-    const rules = {
-      email: 'required|email',
-      name: 'required',
-      password: 'required'
-    };
-
-    const validation = await validate(request.all(), rules);
-
-    if (validation.fails()) {
-      session.withErrors(validation.messages());
-      return view.render('seller.start');
+    try {
+      const seller = await Seller.create();
+      const user = await User.findBy("email", email);
+      const seller_user = await seller
+        .user()
+        .create({ email, password, role: "seller" });
+      response.route("seller.dashboard");
+    } catch (error) {
+      console.log({ error });
     }
   }
 

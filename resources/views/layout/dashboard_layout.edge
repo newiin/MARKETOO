@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>My marketplace</title>
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+	<!-- semantic ui -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+	<!-- swiper -->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" />
+
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.semanticui.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
+
+	<link rel="stylesheet" href="{{ assetsUrl('/css/main.css') }}" />
+
+
+</head>
+
+<body>
+
+	<header>
+		<div class="ui container">
+			<div class="ui secondary pointing menu">
+				<div class="logo">
+
+					<img src="{{ assetsUrl('/images/Logo.png') }}" alt="Logo" />
+				</div>
+				<div class="right menu">
+					<a class="item">
+						Home
+					</a>
+					<a class="item">
+						Messages
+					</a>
+					<a class="item">
+						Friends
+					</a>
+					<a class="item">
+						Home
+					</a>
+					<a class="item">
+						Messages
+					</a>
+					<a class="item">
+						Friends
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="ui container">
+		<div class="ui grid">
+
+			<div class="three wide column">
+				@include('partials._nav_dashboard')
+			</div>
+			<div class="thirteen wide column">
+				<div class="ui  segment dashboard_content">
+					@section('content')
+
+
+					@endsection
+				</div>
+			</div>
+		</div>
+
+	</main>
+	<footer>
+		<div class="ui container">
+			<div class="footer_wrapper">
+				<div class="column">
+					<div class="ui vertical text menu">
+						<div class="header item">
+							How we Help
+						</div>
+						<a href="" class="item">Retailers</a>
+						<a href="" class="item"> Interios</a>
+						<a href="" class="item"> Product Designers</a>
+						<a href="" class="item">Wholesaler</a>
+						<a href="" class="item">Artisan</a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui vertical text menu">
+						<div class="header item">
+							Categories
+						</div>
+						<a href="" class="item">Retailers</a>
+						<a href="" class="item"> Interios</a>
+						<a href="" class="item"> Product Designers</a>
+						<a href="" class="item">Wholesaler</a>
+						<a href="" class="item">Artisan</a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui vertical text menu">
+						<div class="header item">
+							Get to Know Us
+						</div>
+						<a href="" class="item">Retailers</a>
+						<a href="" class="item"> Interios</a>
+						<a href="" class="item"> Product Designers</a>
+						<a href="" class="item">Wholesaler</a>
+						<a href="" class="item">Artisan</a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui vertical text menu">
+						<div class="header item">
+							Join the Comunity
+						</div>
+						<a href="" class="item">Retailers</a>
+						<a href="" class="item"> Interios</a>
+						<a href="" class="item"> Product Designers</a>
+						<a href="" class="item">Wholesaler</a>
+						<a href="" class="item">Artisan</a>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui vertical text menu">
+						<div class="header item">
+							Follow us On Social Media
+						</div>
+						<a href="" class="item"><i class="facebook square icon"></i> Facebook</a>
+						<a href="" class="item"> <i class="youtube  icon"></i> Youtube</a>
+						<a href="" class="item">
+							<i class="google plus square icon"></i>Google +</a>
+						<a href="" class="item">
+							<i class="twitter square icon"></i> Twitter</a>
+						<a href="" class="item">
+							<i class="instagram icon"></i> Instagram</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="ui divider"></div>
+		<div class="copyright">
+			2019 -Smartioo Terms and Conditions Policies
+		</div>
+	</footer>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.js"></script>
+	{{ script('https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js') }}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/dataTables.semanticui.js"></script>
+	<script src="{{ assetsUrl('/js/main.js') }}"></script>
+	<script src="{{ assetsUrl('/js/dropzone.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

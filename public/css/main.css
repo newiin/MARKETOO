@@ -9,7 +9,7 @@ body {
   width: 100%;
 }
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #1c1c1b;
   font-weight: 300;
 }
@@ -48,11 +48,13 @@ header {
   padding: 65px 45px;
   position: relative;
   display: none;
+  text-align: start;
 }
-#register_seller {
-  padding: 0;
-  position: relative;
-  display: none;
+
+#login_register .basic {
+  margin: 0;
+  margin-top: -50px !important;
+  margin-bottom: 8px !important;
 }
 .login_btn {
   background-color: var(--green-color) !important;
@@ -93,7 +95,7 @@ header {
   justify-content: center;
   flex-direction: column;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('../images/team.jpg');
+    url("../images/team.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -261,6 +263,46 @@ header {
   display: flex;
   justify-content: space-between;
 }
+/* Dashboard */
+.pushable > .pusher:after {
+  background-color: rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  opacity: 0;
+}
+.pushable > .pusher.dimmed:after {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0 !important;
+}
+.dashboard_content {
+  background-color: #fff !important;
+}
+.form_wrapper {
+  padding: 12px;
+}
+.seller_product_wrapper .breadcrumb {
+  margin-bottom: 15px;
+}
+.seller_product_wrapper .breadcrumb a {
+  color: #1c1c1b;
+  font-weight: 400;
+}
+
+.seller_product_wrapper .card .header {
+  color: #3b5998 !important;
+}
+
+#dropzoneFrom {
+  border: 3px dotted var(--green-color) !important;
+  margin: 25px 0;
+}
+
+#submit_image {
+  position: absolute;
+  bottom: -30%;
+}
+/* End Dashboard */
+
 /* End page */
 /* footer */
 .footer_wrapper {

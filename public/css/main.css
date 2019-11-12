@@ -298,8 +298,26 @@ header {
 }
 
 #submit_image {
-  position: absolute;
-  bottom: -30%;
+  background-color: var(--green-color) !important;
+  padding-left: 0;
+  color: #fff;
+}
+.ui.labeled.icon.button,
+.ui.labeled.icon.buttons .button {
+  padding-left: 35px !important;
+}
+
+#submit_image i {
+  background-color: var(--green-color) !important;
+  color: #fff;
+}
+.dropzone {
+  min-height: 350px;
+  background: white;
+  padding: 0;
+}
+.dz-default.dz-message {
+  padding-top: 90px !important;
 }
 /* End Dashboard */
 

@@ -1,5 +1,5 @@
 <footer>
-{{ csrfField() }}
+    {{ csrfField() }}
     <div class="ui container">
         <div class="footer_wrapper">
             <div class="column">
@@ -14,7 +14,7 @@
                     <a href="" class="item">Artisan</a>
                 </div>
             </div>
-          
+
             <div class="column">
                 <div class="ui vertical text menu">
                     <div class="header item">
@@ -80,12 +80,7 @@
             <input type="email" name="email" placeholder="Email" required />
         </div>
         <div class="field">
-            <input
-                type="password"
-                name="password"
-                placeholder="password"
-                required
-            />
+            <input type="password" name="password" placeholder="password" required />
         </div>
         <div class="forgot_pass">
             <a href="/">Forgot Password</a>
@@ -115,6 +110,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 {{ script('/js/main.js') }}
+{{ script('/js/swiper.js') }}
 </body>
 
 </html>

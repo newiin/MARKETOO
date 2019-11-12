@@ -28,10 +28,11 @@ Route.group(() => {
   Route.post("/product/create", "Seller/ProductController.store").as(
     "seller.product.store"
   );
-  Route.get("/product/create/image", "Seller/ProductController.image").as(
+  Route.get("/product/create/image/:id", "Seller/ProductController.image").as(
     "seller.product.image.create"
   );
-  Route.post("/product/create/image", "Seller/ProductController.imageStore").as(
-    "seller.product.image.store"
-  );
+  Route.post(
+    "/product/create/image/:id",
+    "Seller/ProductController.imageStore"
+  ).as("seller.product.image.store");
 }).prefix("/user/dashboard");

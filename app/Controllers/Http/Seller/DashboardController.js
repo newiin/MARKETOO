@@ -2,9 +2,12 @@
 const Card = use("App/Models/Card");
 const Seller = use("App/Models/Seller");
 const User = use("App/Models/User");
-
+const collect = require("collect.js");
 class DashboardController {
   async index({ request, view, response, auth }) {
+    var arr = ["apple", "banana", "canaple"];
+    request.cart = arr.slice();
+
     return view.render("seller.dashboard");
   }
   async edit({ view }) {

@@ -59,21 +59,19 @@
     </div>
 
 
-    <form method="post" id="dropzoneFrom" action="/user/dashboard/product/create/image" class="ui form dropzone"
+    <form method="post" id="dropzoneFrom" action="/user/dashboard/product/create/image/{{id}}" class="ui form dropzone"
         enctype="multipart/form-data">
-
+        {{ csrfField() }}
         <div class="fallback">
             <input type="file" name="file[]" multiple />
         </div>
 
-        <button type="submit" class="ui primary button" id="submit_image">
-            Upload image
-        </button>
-
-
     </form>
 
-
+    <button type="submit" class="ui primary button labeled icon" id="submit_image">
+        <i class="upload icon"></i>
+        Upload image
+    </button>
 
 
 

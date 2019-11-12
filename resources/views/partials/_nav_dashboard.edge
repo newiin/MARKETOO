@@ -7,11 +7,10 @@
 		Edit Profile
 	</a>
 	{{--  seller.product.index  --}}
-	<a class="item {{url=="/user/dashboard/product"|| "/user/dashboard/product/create" ? "active":""}}"
+	<a class="item {{url=="/user/dashboard/product" ? "active":""}} {{urlpath ? " active":""}}"
 		href="{{route('seller.product.index')}}">
 		Product Management
 	</a>
-
 	<a class="item">
 		Home
 	</a>

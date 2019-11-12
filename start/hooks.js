@@ -1,29 +1,31 @@
-const { hooks } = require('@adonisjs/ignitor');
+const { hooks } = require("@adonisjs/ignitor");
+const _ = require("lodash");
+const collect = require("collect.js");
 hooks.after.providersBooted(() => {
-  const Request = use('Adonis/Src/Request');
-  const Exception = use('Exception');
-  const Category = use('App/Models/Category');
-  const View = use('View');
+  const Request = use("Adonis/Src/Request");
+  const Exception = use("Exception");
+  const Category = use("App/Models/Category");
+  const View = use("View");
 
-  View.global('Year', () => {
+  View.global("Year", () => {
     return new Date().getFullYear();
   });
 
-  View.global('parseInt', number => {
+  View.global("parseInt", number => {
     return parseInt(number);
   });
 
   Category.all()
     .then(categories => {
-      View.global('categories', categories.toJSON());
+      View.global("categories", categories.toJSON());
     })
     .catch(() => {
       //
     });
-  View.global('range', (start, size) => {
+  View.global("range", (start, size) => {
     return [...Array(size).keys()].map(i => i + start);
   });
-  Request.macro('cart', function() {
-    return this.cookie('cart', []);
+  Request.macro("cart", function() {
+    return this.cookie("cart", []);
   });
 });

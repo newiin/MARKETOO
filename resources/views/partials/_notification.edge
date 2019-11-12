@@ -1,0 +1,9 @@
+@if(flashMessage('notification'))
+<div class=" alert-notification ui message {{ flashMessage('notification.type') }}">
+    <i class="close icon"></i>
+    <div class="header">
+        {{ flashMessage('notification.message') }}
+    </div>
+
+</div>
+@endif

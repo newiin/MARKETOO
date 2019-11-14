@@ -133,7 +133,10 @@ module.exports = {
   csrf: {
     enable: true,
     methods: ["POST", "PUT", "DELETE"],
-    filterUris: ["/seller/register", "/user/dashboard/product/create/image"],
+    filterUris: [
+      "/seller/register",
+      "/user/dashboard/product/create/image/:id"
+    ],
     cookieOptions: {
       httpOnly: false,
       sameSite: true,

@@ -1,7 +1,9 @@
 "use strict";
 const collect = require("collect.js");
 const Product = use("App/Models/Product");
+const Image = use("App/Models/Image");
 const Helpers = use("Helpers");
+const Drive = use("Drive");
 class ProductController {
   async index({ request, response, view }) {
     return view.render("seller.products.index");
@@ -35,18 +37,20 @@ class ProductController {
 
   async imageStore({ params, request, response, session }) {
     if (request.ajax()) {
-      const images = request.file("file");
-      await images.move(Helpers.publicPath("products"), {
-        name: `${new Date().getTime()}.${images.subtype}`
+      request.multipart.file("file", {}, async file => {
+        const url = await Drive.disk("s3").put(
+          new Date().getTime() + "_" + file.clientName,
+          file.stream
+        );
+        try {
+          const product = await Product.findOrFail(9);
+          await product.images().createMany([{ product_id: product.id, url }]);
+        } catch (error) {
+          console.log(error);
+        }
       });
-      if (!image.moved()) {
-        session
-          .withErrors([
-            { field: "image", message: "We could not upload try again" }
-          ])
-          .flashAll();
-        response.redirect("back");
-      }
+
+      await request.multipart.process();
     }
     session.flash({
       notification: {
@@ -54,30 +58,6 @@ class ProductController {
         message: `Your Profile has been created`
       }
     });
-    // try {
-    //   await Profile.create({ user_id, about, education, city, area, is_roaming: roaming, phone, available, image: image.fileName })
-    //   session.flash({
-    //     notification: {
-    //       type: 'success',
-    //       message: `Your Profile has been created`
-    //     }
-    //   })session.flash({
-    //     notification: {
-    //       type: 'success',
-    //       message: `Your Profile has been created`
-    //     }
-    //   })
-    //   response.route('teacher.dashboard.index')
-    // } catch (error) {
-    //   console.log(error);
-
-    //   session.flash({
-    //     notification: {
-    //       type: 'negative',
-    //       message: `We could not create your profile try later`
-    //     }
-    //   })
-
     response.redirect("back");
   }
 }

@@ -2,11 +2,17 @@
 const Card = use("App/Models/Card");
 const Seller = use("App/Models/Seller");
 const User = use("App/Models/User");
+const Image = use("App/Models/Image");
 const collect = require("collect.js");
+const Drive = use("Drive");
+
 class DashboardController {
   async index({ request, view, response, auth }) {
-    var arr = ["apple", "banana", "canaple"];
-    request.cart = arr.slice();
+    const image = await Image.findOrFail(6);
+    const img = image.toJSON();
+    const stream = await Drive.getStream("1573689159980_Elena.jpg");
+
+    console.log(stream);
 
     return view.render("seller.dashboard");
   }

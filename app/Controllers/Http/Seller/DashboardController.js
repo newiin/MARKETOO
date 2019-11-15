@@ -7,12 +7,9 @@ const collect = require("collect.js");
 const Drive = use("Drive");
 
 class DashboardController {
-  async index({ request, view, response, auth }) {
+  async index({ request, view, response, auth, session }) {
     const image = await Image.findOrFail(6);
     const img = image.toJSON();
-    const stream = await Drive.getStream("1573689159980_Elena.jpg");
-
-    console.log(stream);
 
     return view.render("seller.dashboard");
   }

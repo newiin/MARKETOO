@@ -3,12 +3,12 @@ const Category = use("App/Models/Category");
 const Seller = use("App/Models/Seller");
 const Customer = use("App/Models/Customer");
 const User = use("App/Models/User");
+const ls = require("local-storage");
 class CategoryController {
   async index({ response, request, params, session }) {
     const { slug } = params;
     try {
       const category = await Category.findBy("slug", slug);
-
       response.send({ category });
     } catch (error) {
       response.send({ error });

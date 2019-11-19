@@ -31,8 +31,11 @@
     "adonis-lucid-polymorphic": "^1.0.1",
     "aws-sdk": "^2.570.0",
     "collect.js": "^4.18.1",
+    "local-storage": "^2.0.0",
     "lodash": "^4.17.15",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "store": "^2.0.12",
+    "store2": "^2.10.0"
   },
   "devDependencies": {},
   "autoload": {

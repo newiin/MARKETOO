@@ -31,6 +31,19 @@ header {
 .menu .shopping_cart {
   background-color: transparent !important;
 }
+.menu .shopping_cart {
+  font-size: 16px;
+  position: relative;
+}
+.menu .shopping_cart i {
+  color: #c0c0c0;
+}
+#card_total {
+  position: absolute;
+  top: -2px !important;
+  left: 62% !important;
+  color: #8bc34a;
+}
 .search input {
   width: 100%;
 }
@@ -320,7 +333,23 @@ header {
   padding-top: 90px !important;
 }
 /* End Dashboard */
-
+/* Checkout page */
+#coupon {
+  background-color: var(--green-color) !important;
+  color: #fff;
+}
+.proceed_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+#btn_checkout {
+  background: var(--green-color) !important;
+  color: #fff !important;
+  width: 100%;
+  font-size: 14px;
+  border: none !important	;
+}
+/* End checkout */
 /* End page */
 /* footer */
 .footer_wrapper {

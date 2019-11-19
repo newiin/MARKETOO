@@ -1,16 +1,20 @@
 "use strict";
 
 const Route = use("Route");
-
-Route.on("/").render("main.home");
+Route.get("/", "HomeController.index").as("main.home");
 Route.get("/:slug", "CategoryController.index").as("category.index");
-Route.get("/test/test", "CategoryController.test");
+Route.get("/products/all", "ListingController.index").as("products");
+
 Route.get("/seller/start", "Seller/RegisterController.index");
 Route.get("/seller/register", "Seller/RegisterController.create");
 Route.post("/seller/register", "Seller/RegisterController.store").validator([
   "RegisterSeller"
 ]);
+// cart
+Route.get("/shopping/checkout", "CheckoutController.index").as("checkout");
 
+Route.get("/cart/add/:id", "CartController.addItemToCart");
+// checkout
 Route.group(() => {
   Route.get("/", "Seller/DashboardController.index").as("seller.dashboard");
   Route.get("/profile/edit", "Seller/DashboardController.edit").as(

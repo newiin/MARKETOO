@@ -1,0 +1,60 @@
+@layout('layout.layout')
+
+@section('content')
+<main id="checkout">
+    <div class="category_wrapper">
+        <div class="container ui">
+            <div class="ui breadcrumb">
+                <a class="section">Home</a>
+                <div class="divider">/</div>
+                <a class="section">Store</a>
+                <div class="divider">/</div>
+                <div class="active section">T-Shirt</div>
+            </div>
+            <div class="ui grid">
+                <div class="twelve wide column checkout_content">
+
+
+
+
+
+                    <div class="proceed_wrapper">
+                        <div class="ui right labeled left icon input">
+                            <i class="qrcode icon"></i>
+                            <input type="text" placeholder="Coupon code">
+                            <a class="ui tag label" id="coupon">
+                                Coupon Code
+                            </a>
+                        </div>
+                        <div class="ui cards">
+                            <div class="card">
+                                <div class="content">
+
+                                    <p>Subtotal <span>258</span></p>
+                                    <p>Shipping <span>485</span></p>
+                                    <p>Shipping <span>485</span></p>
+
+                                    <button class="ui basic button " id="btn_checkout">
+
+                                        Proceed to checkout
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="four wide column checkout_add">
+                    <div class="ui medium rectangle test ad" data-text="Medium Rectangle"></div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</main>
+@endsection

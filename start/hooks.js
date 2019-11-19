@@ -25,7 +25,4 @@ hooks.after.providersBooted(() => {
   View.global("range", (start, size) => {
     return [...Array(size).keys()].map(i => i + start);
   });
-  Request.macro("cart", function() {
-    return this.cookie("cart", []);
-  });
 });

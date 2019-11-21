@@ -31,14 +31,53 @@ $(document).ready(function() {
   $(".add_product_to_card").click(function(e) {
     e.preventDefault();
     const id = $(this).data("product_id");
+    console.log(id);
+
     $.ajax({
       url: `/cart/add/${id}`,
       type: "GET",
       dataType: "json",
       success: function({ cart, total }) {
-        localStorage.setItem("cart", JSON.stringify(cart));
+        console.log(cart);
 
+        localStorage.setItem("cart", JSON.stringify(cart));
         $("#card_total").text(total);
+      }
+    });
+  });
+  $(".delete_product_from_cart").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+
+    $.ajax({
+      url: `/cart/remove/${id}`,
+      type: "GET",
+      dataType: "json",
+      success: function({ cart }) {
+        console.log(cart);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        e.target.parentElement.parentElement.remove();
+        console.log(e.target.parentElement.parentElement.parentElement);
+      }
+    });
+  });
+
+  $(".add_qty").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+    console.log(id);
+
+    $.ajax({
+      url: `/cart/change/${id}/?product=add`,
+      type: "GET",
+      dataType: "json",
+      success: function({ cart }) {
+        console.log(cart);
+
+        // console.log(cart);
+        // localStorage.setItem("cart", JSON.stringify(cart));
+        // e.target.parentElement.parentElement.remove();
+        // console.log(e.target.parentElement.parentElement.parentElement);
       }
     });
   });
@@ -50,8 +89,8 @@ $(document).ready(function() {
       if (data) {
         data.map(item => {
           $(".checkout_content").prepend(`
-        
-                    <div class="ui grid  ">
+      
+                    <div class="ui grid">
                         <div class="eight wide column">
                             <div class="ui link items divided">
                                 <div class="item">
@@ -74,21 +113,31 @@ $(document).ready(function() {
                            $  ${item.price}
                         </div>
                         <div class="two wide column">
-                           <i class="minus icon"></i>    ${
-                             item.qty
-                           }  <i class="add icon"></i>
+                           <button class="  ui mini compact icon button reduce_qty" data-product_id="${
+                             item.id
+                           }">
+                                <i class="minus icon"></i>
+                           </button>  
+                              ${item.qty}
+                           <button class="ui mini  compact icon button add_qty" data-product_id="${
+                             item.id
+                           }">
+                                <i class="add icon"></i>
+                           </button> 
                         </div>
                         <div class="two wide column">
                            $ ${(item.qty * item.price).toFixed(2)}
                         </div>
                         <div class="two wide column">
-                           <button class="mini ui negative basic button">delete</button>
+                           <button class="mini ui negative basic button delete_product_from_cart" data-product_id="${
+                             item.id
+                           }">delete</button>
                         </div>
 
 
 
                     </div>
-                    <div class="ui divider"></div>
+              </div>      
            
         `);
         });

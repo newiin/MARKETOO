@@ -4,10 +4,9 @@ const Product = use("App/Models/Product");
 
 class ListingController {
   async index({ request, view, response, session }) {
-    session.forget("cart");
     try {
       const products = await Product.all();
-
+      session.forget("cart");
       return view.render("products_listings.index", {
         products: products.toJSON()
       });

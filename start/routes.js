@@ -14,6 +14,9 @@ Route.post("/seller/register", "Seller/RegisterController.store").validator([
 Route.get("/shopping/checkout", "CheckoutController.index").as("checkout");
 
 Route.get("/cart/add/:id", "CartController.addItemToCart");
+Route.get("/cart/remove/:id", "CartController.removeItemFromCart");
+Route.get("/cart/change/:id", "CartController.changeQuantityFromCart");
+
 // checkout
 Route.group(() => {
   Route.get("/", "Seller/DashboardController.index").as("seller.dashboard");

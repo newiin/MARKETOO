@@ -41,8 +41,7 @@ class CartController {
         store.set("cart", cart);
         store.set("cart", cart);
       }
-
-      response.send({ total: cart.length, cart });
+      response.send({ number_of_items: cart.length });
     }
   }
 
@@ -52,14 +51,37 @@ class CartController {
     cart = cart.filter(item => item.id != id);
     session.put("cart", cart);
     store.set("cart", cart);
-    response.send({ cart });
+    response.send({ number_of_items: cart.length });
   }
   async changeQuantityFromCart({ request, response, params, session }) {
     const { product } = request.get();
-    const { id } = params;
-    let cart = store.get("cart");
-
-    response.send({ cart });
+    let { id } = params;
+    id = parseInt(id);
+    let cart = session.get("cart");
+    if (product === "add") {
+      cart = cart.map(item => {
+        if (item.id === id) {
+          item = { ...item, qty: item.qty + 1 };
+        }
+        return item;
+      });
+    } else if (product === "reduce") {
+      cart = cart.map(item => {
+        if (item.id === id) {
+          item = { ...item, qty: item.qty - 1 };
+        }
+        return item;
+      });
+    } else {
+    }
+    session.put("cart", cart);
+    const total = cart.reduce((total, item) => {
+      return total + item.qty * item.price;
+    }, 0);
+    store.set("total", total);
+    const total_topay = store.get("total");
+    session.put("total", total_topay);
+    response.send({ cart, total });
   }
 }
 

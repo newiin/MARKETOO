@@ -1,6 +1,6 @@
 $(document).ready(function() {
-  var total = 0;
-  fechData();
+  const total = parseInt(localStorage.getItem("total"));
+  $("#card_total").text(total);
   $(".special.cards .image").dimmer({
     on: "hover"
   });
@@ -31,16 +31,13 @@ $(document).ready(function() {
   $(".add_product_to_card").click(function(e) {
     e.preventDefault();
     const id = $(this).data("product_id");
-    console.log(id);
-
     $.ajax({
       url: `/cart/add/${id}`,
       type: "GET",
       dataType: "json",
-      success: function({ cart, total }) {
-        console.log(cart);
-
-        localStorage.setItem("cart", JSON.stringify(cart));
+      success: function({ number_of_items }) {
+        localStorage.setItem("total", JSON.stringify(number_of_items));
+        const total = parseInt(localStorage.getItem("total"));
         $("#card_total").text(total);
       }
     });
@@ -48,16 +45,15 @@ $(document).ready(function() {
   $(".delete_product_from_cart").click(function(e) {
     e.preventDefault();
     const id = $(this).data("product_id");
-
     $.ajax({
       url: `/cart/remove/${id}`,
       type: "GET",
       dataType: "json",
-      success: function({ cart }) {
-        console.log(cart);
-        localStorage.setItem("cart", JSON.stringify(cart));
+      success: function({ number_of_items }) {
+        localStorage.setItem("total", JSON.stringify(number_of_items));
+        const total = parseInt(localStorage.getItem("total"));
+        $("#card_total").text(total);
         e.target.parentElement.parentElement.remove();
-        console.log(e.target.parentElement.parentElement.parentElement);
       }
     });
   });
@@ -65,83 +61,46 @@ $(document).ready(function() {
   $(".add_qty").click(function(e) {
     e.preventDefault();
     const id = $(this).data("product_id");
-    console.log(id);
-
     $.ajax({
       url: `/cart/change/${id}/?product=add`,
       type: "GET",
       dataType: "json",
-      success: function({ cart }) {
-        console.log(cart);
-
-        // console.log(cart);
-        // localStorage.setItem("cart", JSON.stringify(cart));
-        // e.target.parentElement.parentElement.remove();
-        // console.log(e.target.parentElement.parentElement.parentElement);
+      success: ({ total }) => {
+        const qty = parseInt($(`.qty_${id}`).text()) + 1;
+        if (qty > 0) {
+          $(this)
+            .siblings()
+            .removeClass("disabled");
+        }
+        const total_per_item = (
+          parseFloat($(`.price_${id}`).text()) * qty
+        ).toFixed(2);
+        $(`.qty_${id}`).text(qty);
+        $(`.total_${id}`).text(total_per_item);
+        $("#subtotal").text(total);
       }
     });
   });
 
-  function fechData() {
-    if (window.location.pathname === "/shopping/checkout") {
-      const items = localStorage.getItem("cart");
-      const data = JSON.parse(items);
-      if (data) {
-        data.map(item => {
-          $(".checkout_content").prepend(`
-      
-                    <div class="ui grid">
-                        <div class="eight wide column">
-                            <div class="ui link items divided">
-                                <div class="item">
-                                    <div class="ui tiny image">
-                                        <img src="https://iotapp1.s3.eu-west-1.amazonaws.com/1573804728238_1573689159980_Elena%20%283%29.jpg">
-                                    </div>
-                                    <div class="content">
-                                        <div class="header">Stevie Feliciano</div>
-                                        <div class="description">
-                                            <p>
-                                            ${item.title}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="two wide column">
-                           $  ${item.price}
-                        </div>
-                        <div class="two wide column">
-                           <button class="  ui mini compact icon button reduce_qty" data-product_id="${
-                             item.id
-                           }">
-                                <i class="minus icon"></i>
-                           </button>  
-                              ${item.qty}
-                           <button class="ui mini  compact icon button add_qty" data-product_id="${
-                             item.id
-                           }">
-                                <i class="add icon"></i>
-                           </button> 
-                        </div>
-                        <div class="two wide column">
-                           $ ${(item.qty * item.price).toFixed(2)}
-                        </div>
-                        <div class="two wide column">
-                           <button class="mini ui negative basic button delete_product_from_cart" data-product_id="${
-                             item.id
-                           }">delete</button>
-                        </div>
-
-
-
-                    </div>
-              </div>      
-           
-        `);
-        });
+  $(".reduce_qty").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+    $.ajax({
+      url: `/cart/change/${id}/?product=reduce`,
+      type: "GET",
+      dataType: "json",
+      success: ({ total }) => {
+        const qty = parseInt($(`.qty_${id}`).text()) - 1;
+        if (qty == 0) {
+          $(this).addClass("disabled");
+        }
+        const total_per_item = (
+          parseFloat($(`.price_${id}`).text()) * qty
+        ).toFixed(2);
+        $(`.qty_${id}`).text(qty);
+        $(`.total_${id}`).text(total_per_item);
+        $("#subtotal").text(total);
       }
-    }
-  }
+    });
+  });
 });

@@ -6,7 +6,8 @@ class CheckoutController {
   async index({ request, view, response, session }) {
     if (session.get("cart")) {
       const items = session.get("cart");
-      return view.render("checkout", { total: items.length });
+      const total = session.get("total");
+      return view.render("checkout", { items, total });
     }
 
     return view.render("checkout");

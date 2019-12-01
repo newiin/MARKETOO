@@ -9,14 +9,12 @@ class RegisterController {
 
   async store({ request, session, view, response }) {
     const { email, password } = request.all();
-
+    const seller = await Seller.create();
     try {
       const seller = await Seller.create();
       const user = await User.findBy("email", email);
-      const seller_user = await seller
-        .user()
-        .create({ email, password, role: "seller" });
-      response.route("seller.dashboard");
+      const seller_user = await seller.user().create({ email, password });
+      response.route("seller.edit.profile");
     } catch (error) {
       console.log({ error });
     }

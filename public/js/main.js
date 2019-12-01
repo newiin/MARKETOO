@@ -6,11 +6,27 @@ $(document).ready(function() {
   });
 
   $(".login_register").click(function() {
-    $("#login_register")
+    $("._login_register")
       .modal({
         centered: true,
         closable: false
       })
+      .modal("show");
+  });
+  $("#btn_checkout").click(function(e) {
+    e.preventDefault();
+    $("#shooping_modal")
+      .modal({
+        closable: false,
+        onDeny: function() {
+          window.location.replace("/");
+          return false;
+        },
+        onApprove: function() {
+          window.location.replace("/");
+        }
+      })
+      .modal("Fade Up")
       .modal("show");
   });
 

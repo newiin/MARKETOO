@@ -9,12 +9,6 @@ const Cart = use("App/Cart");
 
 class DashboardController {
   async index({ request, view, response, auth, session }) {
-    const cart = new Cart(2);
-    cart.addItemToCart(5);
-    cart.removeItemFromCart(5);
-    const carts = cart.getCart();
-    console.log(carts);
-
     return view.render("seller.dashboard");
   }
   async edit({ view }) {

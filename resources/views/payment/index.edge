@@ -1,52 +1,3 @@
-@each(item in items)
-<div class="ui grid">
-    <div class="eight wide column">
-        <div class="ui link items divided">
-            <div class="item">
-                <div class="ui tiny image">
-                    <img
-                        src="https://iotapp1.s3.eu-west-1.amazonaws.com/1573804728238_1573689159980_Elena%20%283%29.jpg">
-                </div>
-                <div class="content">
-                    <div class="header">Stevie Feliciano</div>
-                    <div class="description">
-                        <p>
-                            {{item.title}}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="two wide column ">
-        $ <span class="price_{{item.id}}">{{item.price}}</span>
-    </div>
-    <div class="two wide column">
-        <button class="  ui mini compact icon button reduce_qty" data-product_id="{{item.id}}">
-            <i class="minus icon"></i>
-        </button>
-        <span class="qty_{{item.id}}">{{item.qty}}</span>
-        <button class="ui mini  compact icon button add_qty" data-product_id="{{item.id}}">
-            <i class="add icon"></i>
-        </button>
-    </div>
-    <div class="two wide column ">
-
-        $ <span class="total_{{item.id}}">{{(item.price*item.qty).toFixed(2)}}</span>
-    </div>
-    <div class="two wide column">
-        <button class="mini ui negative basic button delete_product_from_cart"
-            data-product_id="{{item.id}}">delete</button>
-    </div>
-
-
-
-</div>
-@endeach
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,10 +55,111 @@
     </header>
 
     <div class="container ui">
-        <div class="ui centered fluid card">
 
-            <div class="content">
-                <div class="payment_wrapper">
+
+        <div class="ui grid">
+            <div class="ten wide column">
+                <form class="ui form" action="{{route('payment.store')}}" method="POST" id="payment-form">
+                    {{ csrfField() }}
+                    <h4 class="ui dividing header">Your details</h4>
+                    <div class="field">
+
+                        <div class="two fields">
+                            <div class="field">
+                                <label>First Name</label>
+                                <input type="text" name="shipping[first-name]" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <label>Last Name</label>
+                                <input type="text" name="shipping[last-name]" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <label>Email</label>
+                        <div class="field">
+                            <input type="email" name="email" placeholder="email">
+                        </div>
+
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="field">
+                                <label>Confirm</label>
+                                <input type="password" name="confirmation_password" placeholder="Confirm Password">
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <h4 class="ui dividing header">Billing Details</h4>
+                    <div class="field">
+                        <label>Address</label>
+                        <div class="fields">
+                            <div class="twelve wide field">
+                                <input type="search" name="shipping[address]" class="form-control" id="form-address"
+                                    placeholder="Your address" />
+
+                            </div>
+                            <div class="four wide field">
+                                <input type="text" id="form-address2" name="shipping[address]" placeholder="Apt #">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Zip</label>
+                            <input type="text" id="form-zip" name="city" placeholder="City">
+                        </div>
+                        <div class="field">
+                            <label>County</label>
+                            <input type="text" id="form-city" name="city" placeholder="City">
+                        </div>
+                    </div>
+                    <h4 class="ui dividing header">Shipping Information</h4>
+
+                    <div class="field">
+                        <label>Address</label>
+                        <div class="fields">
+                            <div class="twelve wide field">
+                                <input type="search" name="shipping[address]" class="form-control" id="shipping-address"
+                                    placeholder="Your address" />
+
+                            </div>
+                            <div class="four wide field">
+                                <input type="text" id="shipping-address2" name="shipping[address]" placeholder="Apt #">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Zip</label>
+                            <input type="text" id="shipping-zip" name="city" placeholder="City">
+                        </div>
+                        <div class="field">
+                            <label>County</label>
+                            <input type="text" id="shipping-city" name="city" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="form-row">
+
+                        <div id="card-element" class="field">
+                            <!-- a Stripe Element will be inserted here. -->
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <button class="ui button" type="submit">Submit Order</button>
+                </form>
+            </div>
+            <div class="six wide column">
+                <div class="ui card fluid" id="card_wrapper">
                     <form action="/shopping/charge" method="post" id="payment-form" class="ui form">
                         {{ csrfField() }}
                         <div class="form-row">
@@ -117,28 +169,24 @@
                             <div id="card-element" class="field">
                                 <!-- a Stripe Element will be inserted here. -->
                             </div>
-                            <div class="field">
-                                <label>First Name</label>
-                                <input type="text" name="first-name" placeholder="First Name">
-                            </div>
-                            <div class="field">
-                                <label>Last Name</label>
-                                <input type="text" name="last-name" placeholder="Last Name">
-                            </div>
 
-                            <!-- Used to display form errors -->
-                            <div id="card-errors" role="alert"></div>
                         </div>
 
-                        <input type="submit" class="submit" value="Submit Payment">
+                        <input type="submit" class="ui  button btn_card " value="Submit Payment">
                     </form>
                 </div>
+
+
             </div>
+
+
         </div>
 
 
 
+
     </div>
+
     <footer>
 
         <div class="ui container">
@@ -214,44 +262,52 @@
             2019 -Smartioo Terms and Conditions Policies
         </div>
     </footer>
-    <div class="ui card" id="login_register">
-        <i class="close icon" id="close_icon"></i>
-        <form class="ui form">
-            <div class="field">
-                <input type="email" name="email" placeholder="Email" required />
-            </div>
-            <div class="field">
-                <input type="password" name="password" placeholder="password" required />
-            </div>
-            <div class="forgot_pass">
-                <a href="/">Forgot Password</a>
-            </div>
-            <div>
-                <button class="ui tiny button login_btn" type="submit">Login</button>
-                <button class="ui tiny button" type="submit">Login as Guest</button>
-            </div>
-        </form>
-        <span class="or">Or</span>
-        <span>Sign-up With</span>
-        <p class="social_button">
-            <button class="ui mini facebook button">
-                <i class="facebook icon f"></i>
-            </button>
-
-            <button class="ui mini google plus button">
-                <i class="google plus g icon"></i>
-            </button>
-            <button class="ui mini instagram button">
-                <i class="instagram icon"></i>
-            </button>
-        </p>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 
-    {{ script('/js/main.js') }}
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
     {{ script('/js/stripe.js') }}
+    <script>
+        (function() {
+      var placesAutocomplete = places({
+        appId: 'plJDHYOLM3C8',
+        apiKey: 'c809c8f9627d79078ffc288d65d3a349',
+        container: document.querySelector('#form-address'),
+        templates: {
+          value: function(suggestion) {
+            return suggestion.name;
+          }
+        }
+      }).configure({
+        type: 'address'
+      });
+      placesAutocomplete.on('change', function resultSelected(e) {
+        document.querySelector('#form-address2').value = e.suggestion.administrative || '';
+        document.querySelector('#form-city').value = e.suggestion.city || '';
+        document.querySelector('#form-zip').value = e.suggestion.postcode || '';
+      });
+    })();
+    (function() {
+    var placesAutocomplete = places({
+    appId: 'plJDHYOLM3C8',
+    apiKey: 'c809c8f9627d79078ffc288d65d3a349',
+    container: document.querySelector('#shipping-address'),
+    templates: {
+    value: function(suggestion) {
+    return suggestion.name;
+    }
+    }
+    }).configure({
+    type: 'address'
+    });
+    placesAutocomplete.on('change', function resultSelected(e) {
+    document.querySelector('#shipping-address2').value = e.suggestion.administrative || '';
+    document.querySelector('#shipping-city').value = e.suggestion.city || '';
+    document.querySelector('#shipping-zip').value = e.suggestion.postcode || '';
+    });
+    })();
+    </script>
 </body>
 
 </html>

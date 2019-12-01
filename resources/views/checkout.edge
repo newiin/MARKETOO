@@ -60,7 +60,7 @@
                     </div>
                     @endeach
                     <div class="proceed_wrapper">
-                        <div class="ui right labeled left icon input">
+                        <div class="ui right labeled left icon input" style="margin-top:32px">
                             <i class="qrcode icon"></i>
                             <input type="text" placeholder="Coupon code">
                             <a class="ui tag label" id="coupon">
@@ -71,14 +71,15 @@
                             <div class="card">
                                 <div class="content">
 
-                                    <p>Subtotal <span id="subtotal">{{total}}</span></p>
-                                    <p>Shipping <span>485</span></p>
-                                    <p>Shipping <span>485</span></p>
+                                    <p>Subtotal <span id="subtotal">${{total}}</span></p>
+                                    <p>Shipping <span>$10</span></p>
 
                                     <button class="ui basic button " id="btn_checkout">
 
                                         Proceed to checkout
                                     </button>
+
+
                                 </div>
 
                             </div>
@@ -87,7 +88,24 @@
                     </div>
                 </div>
                 <div class="four wide column checkout_add">
-                    <div class="ui medium rectangle test ad" data-text="Medium Rectangle"></div>
+
+                    <div class="ui modal card" id="shooping_modal">
+
+                        <div class="content">
+                            <p>Your inbox is getting full, would you like us to enable automatic archiving of old
+                                messages?</p>
+                        </div>
+                        <div class="actions">
+                            <div class="ui red basic cancel inverted button">
+                                <i class="remove icon"></i>
+                                No
+                            </div>
+                            <div class="ui green ok inverted button">
+                                <i class="checkmark icon"></i>
+                                Yes
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -97,5 +115,6 @@
 
         </div>
     </div>
+
 </main>
 @endsection

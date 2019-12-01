@@ -1,4 +1,5 @@
 "use strict";
+const path = require("path");
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,8 @@ const providers = [
   "@adonisjs/auth/providers/AuthProvider",
   "adonis-lucid-polymorphic/providers/PolymorphicProvider",
   "@adonisjs/validator/providers/ValidatorProvider",
-  "@adonisjs/drive/providers/DriveProvider"
+  "@adonisjs/drive/providers/DriveProvider",
+  "adonis-stripe/providers/StripeProvider"
 ];
 
 /*

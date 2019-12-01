@@ -229,6 +229,13 @@ adonis-lucid-polymorphic@^1.0.1:
   dependencies:
     lodash "^4.17.11"
 
+adonis-stripe@^7.8.0:
+  version "7.8.0"
+  resolved "https://registry.yarnpkg.com/adonis-stripe/-/adonis-stripe-7.8.0.tgz#a20f88bdded6eb0b6a2f696352ad4c92403ef8ef"
+  integrity sha512-s08ASEo+s19JbCgdoC+KEmVg++ezDhHBX4kMv56Q8qYMcKumy/6xodDmvBsRiLqRLZTsFluB4lMuMi38QvzOfg==
+  dependencies:
+    stripe "^7.8.0"
+
 ansi-bgblack@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ansi-bgblack/-/ansi-bgblack-0.1.1.tgz#a68ba5007887701b6aafbe3fa0dadfdfa8ee3ca2"
@@ -2516,6 +2523,11 @@ qs@^6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.0.tgz#d1297e2a049c53119cb49cca366adbbacc80b409"
   integrity sha512-27RP4UotQORTpmNQDX8BHPukOnBP3p1uUJY5UnDhaJB+rMt9iMsok724XL+UHU23bEFOHRMQ2ZhI99qOWUMGFA==
 
+qs@^6.6.0:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
+  integrity sha512-Cxm7/SS/y/Z3MHWSxXb8lIFqgqBowP5JMlTUFyJN88y0SGQhVmZnqFK/PeuMX9LzUyWsqqhNxIyg0jlzq946yA==
+
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
@@ -3022,6 +3034,20 @@ strip-color@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/strip-color/-/strip-color-0.1.0.tgz#106f65d3d3e6a2d9401cac0eb0ce8b8a702b4f7b"
   integrity sha1-EG9l09PmotlAHKwOsM6LinArT3s=
+
+stripe@^7.13.1:
+  version "7.13.1"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.13.1.tgz#602cd748363336b2b22e9cd698ab58fb59088cc9"
+  integrity sha512-aF9F/M10MulZumSrwoDULBOZKqNUvyYA22Bg6u98VJEH/2Dck60W1FcT793WhsHHa/+z6TPR/8Ev7GNq1+SYOQ==
+  dependencies:
+    qs "^6.6.0"
+
+stripe@^7.8.0:
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/stripe/-/stripe-7.14.0.tgz#72e65cad328726ba268321f65604f57a932fc511"
+  integrity sha512-2YSSuJ18jxue0xhW2gZIoz4asC8rITvsNxzh/KuYVKK3dELK6/4M8yoGfSjFcic0D1FtJBB0j6l8Ty26a2L08w==
+  dependencies:
+    qs "^6.6.0"
 
 success-symbol@^0.1.0:
   version "0.1.0"

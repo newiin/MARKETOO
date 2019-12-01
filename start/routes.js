@@ -1,23 +1,37 @@
 "use strict";
 
 const Route = use("Route");
+
 Route.get("/", "HomeController.index").as("main.home");
 Route.get("/:slug", "CategoryController.index").as("category.index");
 Route.get("/products/all", "ListingController.index").as("products");
 
+// user Auth
+Route.get("/auth/register", "Auth/RegisterController.create").as(
+  "register.create"
+);
+Route.post("/auth/register", "Auth/RegisterController.store")
+  .as("register.store")
+  .validator(["Register"]);
+Route.get("/auth/login", "Auth/LoginController.create").as("login.create");
+Route.post("/auth/login", "Auth/LoginController.store").as("login.store");
+Route.get("/auth/logout", "Auth/LogoutController.logout");
+// Seller   registration
 Route.get("/seller/start", "Seller/RegisterController.index");
 Route.get("/seller/register", "Seller/RegisterController.create");
 Route.post("/seller/register", "Seller/RegisterController.store").validator([
   "RegisterSeller"
 ]);
-// cart
-Route.get("/shopping/checkout", "CheckoutController.index").as("checkout");
 
+// Shopping cart
+Route.get("/shopping/checkout", "CheckoutController.index").as("checkout");
+Route.get("/shopping/charge", "PaymentController.index").as("payment.create");
+Route.post("shopping/charge", "PaymentController.store").as("payment.store");
 Route.get("/cart/add/:id", "CartController.addItemToCart");
 Route.get("/cart/remove/:id", "CartController.removeItemFromCart");
 Route.get("/cart/change/:id", "CartController.changeQuantityFromCart");
 
-// checkout
+// Seller
 Route.group(() => {
   Route.get("/", "Seller/DashboardController.index").as("seller.dashboard");
   Route.get("/profile/edit", "Seller/DashboardController.edit").as(
@@ -42,4 +56,11 @@ Route.group(() => {
     "/product/create/image/:id",
     "Seller/ProductController.imageStore"
   ).as("seller.product.image.store");
-}).prefix("/user/dashboard");
+}).prefix("/seller/dashboard");
+
+//Admin
+
+// Customer
+Route.group(() => {
+  Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");
+}).prefix("/customer/dashboard");

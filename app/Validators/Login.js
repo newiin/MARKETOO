@@ -4,7 +4,7 @@ class Login {
   get rules() {
     return {
       email: "required|email",
-      password: "required|min:5|max:30"
+      password: "required"
     };
   }
 

@@ -30,7 +30,7 @@ $(document).ready(function() {
       .modal("show");
   });
 
-  $("#example").DataTable();
+  $(".example").DataTable();
   $(".ui.dropdown").dropdown();
   $(".ui.accordion").accordion();
 

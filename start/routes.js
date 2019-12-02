@@ -14,7 +14,9 @@ Route.post("/auth/register", "Auth/RegisterController.store")
   .as("register.store")
   .validator(["Register"]);
 Route.get("/auth/login", "Auth/LoginController.create").as("login.create");
-Route.post("/auth/login", "Auth/LoginController.store").as("login.store");
+Route.post("/auth/login", "Auth/LoginController.store")
+  .as("login.store")
+  .validator(["Login"]);
 Route.get("/auth/logout", "Auth/LogoutController.logout");
 // Seller   registration
 Route.get("/seller/start", "Seller/RegisterController.index");
@@ -59,7 +61,22 @@ Route.group(() => {
 }).prefix("/seller/dashboard");
 
 //Admin
-
+Route.group(() => {
+  Route.get("/", "Admin/DashboardController.index").as("admin.dashboard");
+  Route.get("/category", "Admin/CategoryController.index").as("admin.category");
+  Route.get("/category/create", "Admin/CategoryController.create").as(
+    "admin.category.create"
+  );
+  Route.post("/category/create", "Admin/CategoryController.store")
+    .as("admin.category.store")
+    .validator(["Category"]);
+  Route.get("/category/:slug/edit", "Admin/CategoryController.edit").as(
+    "admin.category.edit"
+  );
+  Route.put("/category/:slug/edit", "Admin/CategoryController.update").as(
+    "admin.category.put"
+  );
+}).prefix("/admin/dashboard");
 // Customer
 Route.group(() => {
   Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");

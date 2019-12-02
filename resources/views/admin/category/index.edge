@@ -1,0 +1,106 @@
+@layout('layout.dashboard_layout')
+
+@section('content')
+<div class="seller_product_wrapper">
+    <div class="ui breadcrumb">
+        <a class="section">All</a>
+        <div class="divider"> | </div>
+        <a class="section" href="{{route('admin.category.create')}}">Add new Category</a>
+        <div class="divider"> | </div>
+        <a class="section">Pending product</a>
+        <div class="divider"> | </div>
+        <a class="section">Store</a>
+
+    </div>
+
+    <div class="ui four cards">
+        <div class="ui card card_product">
+            <div class="content">
+                <div class="header">Total Product</div>
+                <div class="meta">
+                    <h3>425</h3>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Total Sale</div>
+                <div class="meta">
+                    <span>452</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Active Product</div>
+                <div class="meta">
+                    <span>258</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="ui card">
+            <div class="content">
+                <div class="header">Pending Product</div>
+                <div class="meta">
+                    <span>425</span>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+    <table class="ui celled table example" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>Description</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @each(category in categories)
+            <tr>
+                <td>{{category.name}}</td>
+                <td>{{category.slug}}</td>
+                <td>{{category.description}}</td>
+
+                <td>
+                    <button class="mini ui button">
+                        Mini
+                    </button>
+                    <button class="mini ui button">
+                        Mini
+                    </button>
+                    <button class="mini ui button">
+                        Mini
+                    </button>
+                </td>
+            </tr>
+            @endeach
+
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>Description</th>
+
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+
+@endsection

@@ -8,13 +8,28 @@
             <div class="column"></div>
             <div class="column  ui segment">
                 <form class="ui form" action="{{route('login.store')}}" method="POST">
-                    <div class="field">
+                    {{ csrfField() }}
+                    @if(flashMessage('notification'))
+                    <span> {{ flashMessage('notification') }} </span>
+                    @endif
+                    <div class="field {{hasErrorFor('email')?"error":""}}">
                         <label>Email</label>
-                        <input type="email" name="email" placeholder="Email" required />
+                        <input type="email" name="email" placeholder="Email" value="{{ old('email', '') }}" />
+                        @if(hasErrorFor('email'))
+                        <span class=" ui mini pointing red basic label">
+                            {{ getErrorFor('email') }}
+                        </span>
+                        @endif
                     </div>
-                    <div class="field">
+                    <div class="field {{hasErrorFor('password')?"error":""}}">
                         <label>Password</label>
-                        <input type="password" name="password" placeholder="password" required />
+                        <input type="password" name="password" placeholder="password"
+                            value="{{ old('password', '') }}" />
+                        @if(hasErrorFor('password'))
+                        <span class=" ui mini pointing red basic label">
+                            {{ getErrorFor('password') }}
+                        </span>
+                        @endif
                     </div>
 
                     <a href="/" class="forgot_password">Forgot Password</a>

@@ -32,7 +32,7 @@ class User extends Model {
 
   profile() {
     return this.morphTo(
-      ["App/Models/Seller", "App/Models/Customer"],
+      ["App/Models/Seller", "App/Models/Customer", "App/Models/Admin"],
       "id",
       "id",
       "userable_id",

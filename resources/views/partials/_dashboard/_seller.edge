@@ -1,13 +1,13 @@
 <div class="ui vertical pointing menu">
-    <a class="item {{url=="/user/dashboard"? "active":""}}" href="{{route('seller.dashboard')}}">
+    <a class="item {{url=="/seller/dashboard"? "active":""}}" href="{{route('seller.dashboard')}}">
         Home
     </a>
 
-    <a class="item {{url=="/user/dashboard/profile/edit"? "active":""}}" href="{{route('seller.edit.profile')}}">
+    <a class="item {{url=="/seller/dashboard/profile/edit"? "active":""}}" href="{{route('seller.edit.profile')}}">
         Edit Profile
     </a>
     {{--  seller.product.index  --}}
-    <a class="item {{url=="/user/dashboard/product" ? "active":""}} {{urlpath ? " active":""}}"
+    <a class="item {{url=="/seller/dashboard/product" ? "active":""}} {{urlpath ? " active":""}}"
         href="{{route('seller.product.index')}}">
         Product Management
     </a>

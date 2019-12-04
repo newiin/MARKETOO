@@ -15,10 +15,13 @@
             <div class="ui grid">
                 <div class="four wide column category_sidebar">
                     <div class="ui vertical menu">
+                        @each(subcategory in subcategories)
                         <a class="active teal item">
-                            Inbox
-                            <div class="ui teal left pointing label">1</div>
+                            {{subcategory.name}}
+                            <div class="ui teal left pointing label">{{subcategory.__meta__.total_products}}</div>
                         </a>
+                        @endeach
+
                         <a class="item">
                             Spam
                             <div class="ui label">51</div>
@@ -39,6 +42,30 @@
                             Updates
                             <div class="ui label">1</div>
                         </a>
+                    </div>
+                    <div class="ui vertical accordion menu">
+                        <div class="item">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Category
+                            </a>
+                            <div class="active content">
+                                <div class="ui form">
+                                    <div class="grouped fields">
+                                        @each(subcategory in subcategories)
+                                        <div class="field">
+                                            <div class="ui checkbox">
+                                                <input type="checkbox" name="small" />
+                                                <label>{{subcategory.name}}</label>
+                                            </div>
+                                        </div>
+                                        @endeach
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="ui vertical accordion menu">
                         <div class="item">
@@ -84,158 +111,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui vertical accordion menu">
-                        <div class="item">
-                            <a class="title">
-                                <i class="dropdown icon"></i>
-                                Colors
-                            </a>
-                            <div class="active content">
-                                <div class="ui form">
-                                    <div class="grouped fields">
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="small" />
-                                                <label>Red</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="medium" />
-                                                <label>Orange</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="large" />
-                                                <label>Green</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="x-large" />
-                                                <label>Blue</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical accordion menu">
-                        <div class="item">
-                            <a class="title">
-                                <i class="dropdown icon"></i>
-                                Colors
-                            </a>
-                            <div class="active content">
-                                <div class="ui form">
-                                    <div class="grouped fields">
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="small" />
-                                                <label>Red</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="medium" />
-                                                <label>Orange</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="large" />
-                                                <label>Green</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="x-large" />
-                                                <label>Blue</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical accordion menu">
-                        <div class="item">
-                            <a class="title">
-                                <i class="dropdown icon"></i>
-                                Colors
-                            </a>
-                            <div class="active content">
-                                <div class="ui form">
-                                    <div class="grouped fields">
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="small" />
-                                                <label>Red</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="medium" />
-                                                <label>Orange</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="large" />
-                                                <label>Green</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="x-large" />
-                                                <label>Blue</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ui vertical accordion menu">
-                        <div class="item">
-                            <a class="title">
-                                <i class="dropdown icon"></i>
-                                Colors
-                            </a>
-                            <div class="active content">
-                                <div class="ui form">
-                                    <div class="grouped fields">
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="small" />
-                                                <label>Red</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="medium" />
-                                                <label>Orange</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="large" />
-                                                <label>Green</label>
-                                            </div>
-                                        </div>
-                                        <div class="field">
-                                            <div class="ui checkbox">
-                                                <input type="checkbox" name="x-large" />
-                                                <label>Blue</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
                 <div class="twelve wide column category_content">
                     <div class="ui grid stackable ">
@@ -254,7 +131,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="/images/team.jpg" />
+                                        <img src="{{product.images[0].url}}" />
                                     </div>
                                     <div class="content">
                                         <div>

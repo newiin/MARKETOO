@@ -11,7 +11,7 @@ class LoginController {
       if (user.userable_type === "customers") {
         response.route("customer.dashboard");
       } else if (user.userable_type === "sellers") {
-        response.route("seller.edit.profile");
+        response.route("seller.dashboard");
       } else if (user.userable_type === "admins") {
         response.route("admin.dashboard");
       }

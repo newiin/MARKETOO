@@ -3,8 +3,7 @@
 const Route = use("Route");
 
 Route.get("/", "HomeController.index").as("main.home");
-Route.get("/:slug", "CategoryController.index").as("category.index");
-Route.get("/products/all", "ListingController.index").as("products");
+Route.get("/category/:slug", "ListingController.index").as("listings.product");
 
 // user Auth
 Route.get("/auth/register", "Auth/RegisterController.create").as(
@@ -17,7 +16,7 @@ Route.get("/auth/login", "Auth/LoginController.create").as("login.create");
 Route.post("/auth/login", "Auth/LoginController.store")
   .as("login.store")
   .validator(["Login"]);
-Route.get("/auth/logout", "Auth/LogoutController.logout");
+Route.get("/auth/logout", "Auth/LogoutController.logout").as("auth.logout");
 // Seller   registration
 Route.get("/seller/start", "Seller/RegisterController.index");
 Route.get("/seller/register", "Seller/RegisterController.create");
@@ -33,7 +32,7 @@ Route.get("/cart/add/:id", "CartController.addItemToCart");
 Route.get("/cart/remove/:id", "CartController.removeItemFromCart");
 Route.get("/cart/change/:id", "CartController.changeQuantityFromCart");
 
-// Seller
+// Seller dashboard
 Route.group(() => {
   Route.get("/", "Seller/DashboardController.index").as("seller.dashboard");
   Route.get("/profile/edit", "Seller/DashboardController.edit").as(
@@ -48,9 +47,9 @@ Route.group(() => {
   Route.get("/product/create", "Seller/ProductController.create").as(
     "seller.product.create"
   );
-  Route.post("/product/create", "Seller/ProductController.store").as(
-    "seller.product.store"
-  );
+  Route.post("/product/create", "Seller/ProductController.store")
+    .as("seller.product.store")
+    .validator(["Product"]);
   Route.get("/product/create/image/:id", "Seller/ProductController.image").as(
     "seller.product.image.create"
   );
@@ -67,6 +66,7 @@ Route.group(() => {
   Route.get("/category/create", "Admin/CategoryController.create").as(
     "admin.category.create"
   );
+  // category
   Route.post("/category/create", "Admin/CategoryController.store")
     .as("admin.category.store")
     .validator(["Category"]);
@@ -75,6 +75,22 @@ Route.group(() => {
   );
   Route.put("/category/:slug/edit", "Admin/CategoryController.update").as(
     "admin.category.put"
+  );
+  // subcategory
+  Route.get("/subcategory", "Admin/SubcategoryController.index").as(
+    "admin.subcategory"
+  );
+  Route.get("/subcategory/create", "Admin/SubcategoryController.create").as(
+    "admin.subcategory.create"
+  );
+  Route.post("/subcategory/create", "Admin/SubcategoryController.store")
+    .as("admin.subcategory.store")
+    .validator(["Subcategory"]);
+  Route.get("/subcategory/:slug/edit", "Admin/SubcategoryController.edit").as(
+    "admin.subcategory.edit"
+  );
+  Route.put("/subcategory/:slug/edit", "Admin/SubcategoryController.update").as(
+    "admin.subcategory.put"
   );
 }).prefix("/admin/dashboard");
 // Customer

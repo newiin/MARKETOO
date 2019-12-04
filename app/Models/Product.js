@@ -7,6 +7,12 @@ class Product extends Model {
   images() {
     return this.hasMany("App/Models/Image");
   }
+  subcategory() {
+    return this.belongsTo("App/Models/Subcategory");
+  }
+  seller() {
+    return this.belongsTo("App/Models/Seller");
+  }
 }
 
 module.exports = Product;

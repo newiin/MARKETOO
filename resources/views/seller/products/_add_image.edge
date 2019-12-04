@@ -59,8 +59,8 @@
     </div>
 
 
-    <form method="post" id="dropzoneFrom" action="/user/dashboard/product/create/image/{{id}}" class="ui form dropzone"
-        enctype="multipart/form-data">
+    <form method="post" id="dropzoneFrom" action="/seller/dashboard/product/create/image/{{id}}"
+        class="ui form dropzone" enctype="multipart/form-data">
         {{ csrfField() }}
         <div class="fallback">
             <input type="file" name="file[]" multiple />

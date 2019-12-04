@@ -4,6 +4,8 @@ const Product = use("App/Models/Product");
 const Image = use("App/Models/Image");
 const Helpers = use("Helpers");
 const Drive = use("Drive");
+const { sanitizor } = use("Validator");
+const Subcategory = use("App/Models/Subcategory");
 class ProductController {
   async index({ request, response, view }) {
     return view.render("seller.products.index");
@@ -11,14 +13,43 @@ class ProductController {
 
   async create({ request, response, view }) {
     const urlpath = request.url();
-    return view.render("seller.products.create", { urlpath });
+    const subcategories = await Subcategory.all();
+    return view.render("seller.products.create", {
+      urlpath,
+      subcategories: subcategories.toJSON()
+    });
   }
 
-  async store({ request, response }) {
-    const { title, description } = request.all();
-    const product = await Product.create({ title, description });
-
-    response.route("seller.product.image.create", { id: product.id });
+  async store({ request, response, session, auth }) {
+    try {
+      const user = await auth.getUser();
+      const {
+        title,
+        description,
+        subcategory,
+        quantity,
+        price
+      } = request.all();
+      const slug = await sanitizor.slug(title);
+      const product = await Product.create({
+        title,
+        slug,
+        description,
+        subcategory_id: subcategory,
+        quantity,
+        price,
+        seller_id: user.id
+      });
+      session.flash({
+        notification: {
+          type: "success",
+          message: `Your product has been success full created add images`
+        }
+      });
+      response.route("seller.product.image.create", { id: product.id });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async show({ params, request, response, view }) {}
@@ -36,20 +67,17 @@ class ProductController {
   }
 
   async imageStore({ params, request, response, session }) {
+    const { id } = params;
+
     if (request.ajax()) {
       request.multipart.file("file", {}, async file => {
         const url = await Drive.disk("s3").put(
           new Date().getTime() + "_" + file.clientName,
           file.stream
         );
-        try {
-          const product = await Product.findOrFail(9);
-          await product.images().createMany([{ product_id: product.id, url }]);
-        } catch (error) {
-          console.log(error);
-        }
+        const product = await Product.findOrFail(id);
+        await product.images().createMany([{ product_id: product.id, url }]);
       });
-
       await request.multipart.process();
     }
     session.flash({
@@ -58,7 +86,7 @@ class ProductController {
         message: `Your Profile has been created`
       }
     });
-    response.redirect("back");
+    response.route("seller.dashboard");
   }
 }
 

@@ -15,6 +15,9 @@ class Seller extends Model {
       "userable_type"
     );
   }
+  products() {
+    return this.hasMany("App/Models/Product");
+  }
 }
 
 module.exports = Seller;

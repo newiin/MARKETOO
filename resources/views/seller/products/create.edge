@@ -61,25 +61,57 @@
     <div class="form_wrapper">
         <form class="ui form" method="POST" action="{{route('seller.product.store')}}">
             {{ csrfField() }}
-            <div class="field">
+            <div class="field {{hasErrorFor('title')?"error":""}}">
                 <label>Product Title</label>
                 <input type="text" name="title" placeholder="Title">
+                @if(hasErrorFor('title'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('title') }}
+                </span>
+                @endif
             </div>
-            <div class="field">
-                <label>Product Price</label>
-                <input type="text" name="price" placeholder="Price">
-            </div>
-            <div class="ui form">
-                <div class="field">
-                    <label>Product Description</label>
-                    <textarea name="description"></textarea>
-                </div>
-                <div class="field">
-                    <label>Short Text</label>
-                    <textarea rows="2"></textarea>
-                </div>
+            <div class="field {{hasErrorFor('subcategory')?"error":""}}">
+                <label>Category</label>
+                <select class="ui dropdown  " name="subcategory">
+                    <option value=""></option>
+                    @each(subcategory in subcategories)
+                    <option value="{{subcategory.id}}">{{subcategory.name}}</option>
+                    @endeach
+                </select>
             </div>
 
+            @if(hasErrorFor('subcategory'))
+            <span class=" ui mini pointing red basic label">
+                {{ getErrorFor('subcategory') }}
+            </span>
+            @endif
+            <div class="field {{hasErrorFor('price')?"error":""}}">
+                <label>Product Price</label>
+                <input type="text" name="price" placeholder="Price">
+                @if(hasErrorFor('price'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('price') }}
+                </span>
+                @endif
+            </div>
+            <div class="field {{hasErrorFor('quantity')?"error":""}}">
+                <label>Stock Available</label>
+                <input type="text" name="quantity" placeholder="Price">
+                @if(hasErrorFor('quantity'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('quantity') }}
+                </span>
+                @endif
+            </div>
+            <div class="field {{hasErrorFor('description')?"error":""}}">
+                <label>Product Description</label>
+                <textarea name="description"></textarea>
+                @if(hasErrorFor('description'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('description') }}
+                </span>
+                @endif
+            </div>
             <button class="ui button" type="submit">Submit</button>
         </form>
     </div>

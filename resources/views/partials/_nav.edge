@@ -1,32 +1,9 @@
 <div class="category">
     <div class="ui secondary  menu">
         @each(category in categories)
-        <a class=" item" href="/{{category.slug}}">
+        <a class=" item" href="/category/{{category.slug}}">
             {{category.name}}
         </a>
         @endeach
-
-        <a class="item" href="{{route('products')}}">
-            Messages
-        </a>
-        <a class="item" href="/category.html">
-            Friends
-        </a>
-        <a class=" item" href="/category.html">
-            Home
-        </a>
-        <a class="item" href="/category.html">
-            Messages
-        </a>
-        <a class="item" href="/category.html">
-            Friends
-        </a>
-        <a class=" item" href="/category.html">
-            Home
-        </a>
-        <a class="item" href="/category.html">
-            Messages
-        </a>
-
     </div>
 </div>

@@ -5,7 +5,6 @@ const User = use("App/Models/User");
 const Image = use("App/Models/Image");
 const collect = require("collect.js");
 const Drive = use("Drive");
-const Cart = use("App/Cart");
 
 class DashboardController {
   async index({ request, view, response, auth, session }) {

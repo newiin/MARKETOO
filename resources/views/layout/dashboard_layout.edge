@@ -14,11 +14,10 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" />
 
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/css/dataTables.semanticui.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.semanticui.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
 
-	<link rel="stylesheet" href="{{ assetsUrl('/css/main.css') }}" />
+	<link rel="stylesheet" href="{{ assetsUrl('css/main.css') }}" />
 
 
 </head>
@@ -30,7 +29,7 @@
 			<div class="ui secondary pointing menu">
 				<div class="logo">
 
-					<img src="{{ assetsUrl('/images/Logo.png') }}" alt="Logo" />
+					<img src="{{ assetsUrl('/images/logo1.png') }}" alt="Logo" />
 				</div>
 				<div class="right menu">
 					<a class="item">
@@ -148,12 +147,13 @@
 		</div>
 	</footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.js"></script>
-	{{ script('https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js') }}
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.19/js/dataTables.semanticui.js"></script>
-	<script src="{{ assetsUrl('/js/main.js') }}"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.semanticui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+	<script src="{{ assetsUrl('js/datatable.js') }}"></script>
 	<script src="{{ assetsUrl('/js/dropzone.js') }}"></script>
 
 

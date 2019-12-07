@@ -1,0 +1,160 @@
+@layout('layout.layout')
+
+@section('content')
+
+<main>
+
+    <div class="container ui">
+        <div class="ui breadcrumb">
+            <a class="section">Home</a>
+            <div class="divider">/</div>
+            <a class="section">Store</a>
+            <div class="divider">/</div>
+            <div class="active section">T-Shirt</div>
+        </div>
+        <div class="ui grid">
+            <div class="four wide column detail_sidebar">
+                <div class="ui vertical menu seller_info ">
+                    <div class="seller_image_wrapper">
+
+
+                        <div class="name_wrapper">
+
+
+
+                            <span>{{ logo}}</span>
+                        </div>
+                        <div class="info_wrapper">
+                            <h3>{{product.seller.first_name}} {{product.seller.last_name}}</h3>
+                            <p class="seller_city">{{product.seller.city}}</p>
+                            <button class="ui secondary ui positive button">
+                                Follow
+                            </button>
+                            <button class="ui positive basic button">
+                                Contact
+                            </button>
+                            <p class="seller_about">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                Incidunt, quibusdam rerum
+                                illum laudantium nobis, a animi quidem voluptate eaque, commodi dolor soluta enim
+                                similique reprehenderit.</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="twelve wide column product_details_content">
+                <div class="product_title">
+                    <p>{{product.title}}</p>
+                </div>
+                <div class="ui grid ">
+                    <div class="row">
+                        <div class="twelve wide column">
+                            <div class="demo">
+                                <ul id="vertical">
+                                    @each(image in product.images)
+                                    <li data-thumb="{{image.url}}">
+                                        <img src="{{image.url}}" />
+                                    </li>
+                                    @endeach
+                                    @each(image in product.images)
+                                    <li data-thumb="{{image.url}}">
+                                        <img src="{{image.url}}" />
+                                    </li>
+                                    @endeach
+                                    @each(image in product.images)
+                                    <li data-thumb="{{image.url}}">
+                                        <img src="{{image.url}}" />
+                                    </li>
+                                    @endeach
+                                    @each(image in product.images)
+                                    <li data-thumb="{{image.url}}">
+                                        <img src="{{image.url}}" />
+                                    </li>
+                                    @endeach
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="four wide column">
+                            <div class="ui segment product_action">
+
+                                <a class="ui left corner label">
+                                    <i class="heart icon"></i>
+                                </a>
+                                <div class="product_price">
+                                    <span> $ {{product.price}}</span>
+                                </div>
+                                <div class="rating" data-rate-value=5></div>
+                                <p style="margin-top:18px">In stock</p>
+                                <p>Shipping: Free</p>
+
+                                <button class="ui button add_product_to_card " data-product_id="{{product.id}}">
+                                    <i class="icon cart"></i>
+                                    Add To Cart
+                                </button>
+
+                                <button class="ui positive basic button" id="chk">
+                                    <i class="credit card icon"></i>
+                                    Checkout
+                                </button>
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <p>Some products From Carlos Barbier</p>
+        <div class="twelve wide column category_content">
+            <div class="ui grid stackable ">
+                @each(product in products)
+                <div class="four wide column">
+                    <div class="ui special cards">
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <div class="center add_product_to_card" data-product_id="{{product.id}}">
+                                            <div class="ui  button add_to_card mini">
+                                                Add To Cart
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="{{product.images[0].url}}" />
+                            </div>
+                            <div class="content">
+                                <div>
+                                    <a class="ui small header category">Team Fu</a>
+                                </div>
+                                <div class="title">
+                                    <a href="/product/{{product.slug}}">
+                                        <span> {{product.title}}</span>
+                                        <i class="angle right icon"></i></a>
+                                </div>
+                                <div class="price">$ {{product.price}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endeach
+
+
+
+            </div>
+
+        </div>
+    </div>
+</main>
+@endsection

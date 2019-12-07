@@ -31,6 +31,28 @@ class ListingController {
       response.send(product);
     }
   }
+  async show({ request, view, response, params }) {
+    const { slug } = params;
+    try {
+      const product = await Product.query()
+        .where("slug", slug)
+        .with("images")
+        .with("seller")
+        .fetch();
+      const {
+        seller: { first_name }
+      } = product.toJSON()[0];
+
+      const logo = first_name.toUpperCase().charAt(0);
+
+      return view.render("products_listings.details", {
+        product: product.toJSON()[0],
+        logo
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 module.exports = ListingController;

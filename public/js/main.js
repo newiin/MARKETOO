@@ -30,7 +30,6 @@ $(document).ready(function() {
       .modal("show");
   });
 
-  $(".example").DataTable();
   $(".ui.dropdown").dropdown();
   $(".ui.accordion").accordion();
 
@@ -46,6 +45,8 @@ $(document).ready(function() {
   });
   $(".add_product_to_card").click(function(e) {
     e.preventDefault();
+    console.log(e);
+
     const id = $(this).data("product_id");
     $.ajax({
       url: `/cart/add/${id}`,
@@ -119,4 +120,18 @@ $(document).ready(function() {
       }
     });
   });
+  var options = {
+    max_value: 5,
+    step_size: 0.5,
+    initial_value: 0,
+    cursor: "default",
+    readonly: false,
+    change_once: false, // Determines if the rating can only be set once
+    ajax_method: "POST",
+    url: "http://localhost/test.php",
+    additional_data: {} // Additional data to send to the server
+  };
+
+  $(".rating").rate(options);
+  $("#example").DataTable();
 });

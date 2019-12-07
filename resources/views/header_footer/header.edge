@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
 	<!-- swiper -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.css">
 	<link rel="stylesheet" href="/css/main.css" />
 </head>
 
@@ -22,7 +22,7 @@
 			<div class="ui secondary menu">
 				<div class="logo">
 					<a href="/">
-						<img src="{{ assetsUrl('/images/Logo.png') }}" alt="Logo" />
+						<img src="{{ assetsUrl('/images/logo1.png') }}" alt="Logo" />
 					</a>
 				</div>
 				<div class="ui action input search">
@@ -30,7 +30,10 @@
 					<button class="ui button">Search</button>
 				</div>
 				<div class="right menu">
-					<button class="ui  basic button login_register">Login</button>
+					<a href="/auth/login">
+						<button class="ui  basic button login_register">Login</button>
+
+					</a>
 					<button class="ui icon button like">
 						<i class="heart outline icon"></i>
 					</button>
@@ -45,6 +48,9 @@
 
 				</div>
 			</div>
+		</div>
+		<div class="ui container">
+			@include('partials._notification')
 		</div>
 
 		<div class="ui segment container hero_image">

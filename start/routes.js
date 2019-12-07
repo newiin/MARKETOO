@@ -4,6 +4,7 @@ const Route = use("Route");
 
 Route.get("/", "HomeController.index").as("main.home");
 Route.get("/category/:slug", "ListingController.index").as("listings.product");
+Route.get("/product/:slug", "ListingController.show").as("listings.show");
 
 // user Auth
 Route.get("/auth/register", "Auth/RegisterController.create").as(
@@ -57,7 +58,9 @@ Route.group(() => {
     "/product/create/image/:id",
     "Seller/ProductController.imageStore"
   ).as("seller.product.image.store");
-}).prefix("/seller/dashboard");
+})
+  .prefix("/seller/dashboard")
+  .middleware(["seller"]);
 
 //Admin
 Route.group(() => {
@@ -92,8 +95,16 @@ Route.group(() => {
   Route.put("/subcategory/:slug/edit", "Admin/SubcategoryController.update").as(
     "admin.subcategory.put"
   );
+  Route.get("/sellers", "Admin/DashboardController.sellers").as(
+    "admin.sellers"
+  );
+  Route.get("/customers", "Admin/DashboardController.customers").as(
+    "admin.customers"
+  );
 }).prefix("/admin/dashboard");
 // Customer
 Route.group(() => {
   Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");
-}).prefix("/customer/dashboard");
+})
+  .prefix("/customer/dashboard")
+  .middleware(["customer"]);

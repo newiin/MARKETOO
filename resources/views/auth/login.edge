@@ -6,6 +6,7 @@
     <div class="ui grid">
         <div class="three column row">
             <div class="column"></div>
+            @include('partials._notification')
             <div class="column  ui segment">
                 <form class="ui form" action="{{route('login.store')}}" method="POST">
                     {{ csrfField() }}

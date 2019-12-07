@@ -1,33 +1,34 @@
 @layout('layout.dashboard_layout')
-
 @section('content')
 <div class="seller_product_wrapper dashboard_top_menu">
-    <div class="ui breadcrumb">
-        <a class="section">All</a>
-        <div class="divider"> | </div>
-        <a class="section" href="{{route('admin.category.create')}}">Add new Category</a>
-        <div class="divider"> | </div>
-        <a class="section" href="{{route('admin.subcategory.create')}}">add new subcategory</a>
 
-    </div>
+    <h2 class="ui header">Customers</h2>
+    <div class="ui divider"></div>
     <table class="ui celled table example" style="width:100%">
         <thead>
             <tr>
 
                 <th>Name</th>
-                <th>Slug</th>
-                <th>Description</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Adress</th>
+                <th>City</th>
+                <th>Country</th>
                 <th>Action</th>
 
 
             </tr>
         </thead>
         <tbody>
-            @each(category in categories)
+            @each(customer in customers)
             <tr>
-                <td>{{category.name}}</td>
-                <td>{{category.slug}}</td>
-                <td>{{category.description}}</td>
+                <td>{{customer.name}}</td>
+                <td>{{customer.user.email}}</td>
+                <td>{{customer.phone}}</td>
+                <td>{{customer.address}}</td>
+                <td>{{customer.city}}</td>
+                <td>{{customer.country}}</td>
+
 
                 <td>
                     <a href="" class="item">
@@ -38,7 +39,7 @@
 
                     <a class="item" href="http://">
                         <button class="ui mini positive basic button">
-                            Edit
+                            Contact Email
                         </button>
                     </a>
 
@@ -55,5 +56,7 @@
 
 </div>
 
+
+@endsection
 
 @endsection

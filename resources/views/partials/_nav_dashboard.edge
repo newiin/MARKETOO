@@ -1,7 +1,9 @@
-@if(auth.user.userable_type==="sellers")
-@include('partials/_dashboard/_seller')
-@elseif(auth.user.userable_type==="customers")
-@include('partials/_dashboard/_customer')
-@elseif(auth.user.userable_type==="admins")
-@include('partials/_dashboard/_admin')
-@endif
+<div id="admin_nav">
+    @if(auth.user.userable_type==="sellers")
+    @include('partials/_dashboard/_seller')
+    @elseif(auth.user.userable_type==="customers")
+    @include('partials/_dashboard/_customer')
+    @elseif(auth.user.userable_type==="admins")
+    @include('partials/_dashboard/_admin')
+    @endif
+</div>

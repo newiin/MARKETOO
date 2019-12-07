@@ -1,4 +1,4 @@
-<div class="ui vertical pointing menu">
+<div class="ui vertical pointing menu dashbord_menu">
     <a class="item {{url=="/admin/dashboard"? "active":""}}" href="{{route('admin.dashboard')}}">
         Dashboard
     </a>
@@ -8,11 +8,11 @@
         Category
     </a>
     {{--  seller.product.index  --}}
-    <a class="item {{url=="/user/dashboard/product" ? "active":""}}" href="{{route('seller.product.index')}}">
-        Customer
+    <a class="item {{url=="/admin/dashboard/customers" ? "active":""}}" href="{{route('admin.customers')}}">
+        Customers
     </a>
-    <a class="item">
-        Seller
+    <a class="item {{url=="/admin/dashboard/sellers" ? "active":""}}" href="{{route('admin.sellers')}}">
+        Sellers
     </a>
     <a class="item">
         Finances

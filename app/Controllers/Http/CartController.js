@@ -1,7 +1,6 @@
 "use strict";
 const ls = require("local-storage");
 const Product = use("App/Models/Product");
-const Cart = use("App/Cart");
 const store = require("store");
 
 class CartController {

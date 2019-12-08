@@ -1,18 +1,18 @@
 <div class="ui vertical pointing menu dashbord_menu">
-    <a class="item {{url=="/user/dashboard"? "active":""}}" href="{{route('seller.dashboard')}}">
-        customer
+    <a class="item {{url=="/customer/dashboard"? "active":""}}" href="{{route('customer.dashboard')}}">
+        Dashboard
     </a>
 
-    <a class="item {{url=="/user/dashboard/profile/edit"? "active":""}}" href="{{route('seller.edit.profile')}}">
-        customer
+    <a class="item {{url=="/customer/dashboard/address/edit"? "active":""}}"
+        href="{{route('customer.address.create')}}">
+        Billing Address
     </a>
-    {{--  seller.product.index  --}}
-    <a class="item {{url=="/user/dashboard/product" ? "active":""}} {{urlpath ? " active":""}}"
-        href="{{route('seller.product.index')}}">
-        customer
+    <a class="item {{url=="/customer/dashboard/product" ? "active":""}} {{urlpath ? " active":""}}"
+        href="{{route('customer.edit.profie')}}">
+        Edit Profile
     </a>
     <a class="item">
-        Home
+        Change password
     </a>
     <a class="item">
         Messages

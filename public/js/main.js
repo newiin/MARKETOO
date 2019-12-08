@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $("#context2 .menu .item").tab({
+    // special keyword works same as above
+    context: "parent"
+  });
   const total = parseInt(localStorage.getItem("total"));
   $("#card_total").text(total);
   $(".special.cards .image").dimmer({

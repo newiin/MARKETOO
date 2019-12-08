@@ -53,8 +53,11 @@
 			@include('partials._notification')
 		</div>
 
-		<div class="ui segment container hero_image">
-			@include('partials._nav')
+		<div class="ui segment  fluid hero_image">
+			<div class="ui container">
+				@include('partials._nav')
+			</div>
+
 			@if(url==='/')
 			@include('partials._hero_image')
 			@endif

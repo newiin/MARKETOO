@@ -2,12 +2,20 @@
 
 @section('content')
 
-<div class="login_register">
-    <div class="ui grid">
-        <div class="three column row">
-            <div class="column"></div>
-            <div class="column  ui segment">
-                <form class="ui form" action="{{route('register.store')}}" method="POST">
+
+<div class="ui grid">
+    <div class="three wide column"></div>
+
+    <div class="ten wide column">
+        <div class="login_register">
+
+            <div class=" ui top attached tabular menu">
+                <a class="item " href="{{route('login.create')}}" data-tab="fourth">Returning Customer</a>
+                <a class="item active" href="{{route('register.create')}}">New Customer</a>
+            </div>
+            <div class="ui tab active segment" data-tab="fifth">
+                <p>Please create an account by enterring your email and password</p>
+                <form class="ui form" action="{{route('register.store')}}" method="POST" style="margin-bottom:18px">
                     {{ csrfField() }}
                     <div class="field {{hasErrorFor('email')?"error":""}}">
                         <label>Email</label>
@@ -32,9 +40,9 @@
                         <label>Confirm</label>
                         <input type="password" name="password_confirmation" placeholder="confir password" />
                     </div>
-                    <a href="/" class="forgot_password">Forgot Password</a>
+
                     <div class="login_btn">
-                        <button class="ui  button " type="submit">Login</button>
+                        <button class="ui  button " type="submit">Continue</button>
 
                     </div>
                 </form>
@@ -53,10 +61,14 @@
                     </button>
                 </p>
             </div>
-            <div class="column"></div>
-        </div>
 
+
+        </div>
     </div>
+</div>
+<div class="three wide column"></div>
+</div>
+
 
 </div>
 

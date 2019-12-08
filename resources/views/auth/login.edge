@@ -2,49 +2,58 @@
 
 @section('content')
 
-<div class="login_register">
-    <div class="ui grid">
-        <div class="three column row">
-            <div class="column"></div>
-            @include('partials._notification')
-            <div class="column  ui segment">
-                <form class="ui form" action="{{route('login.store')}}" method="POST">
-                    {{ csrfField() }}
-                    @if(flashMessage('notification'))
-                    <span> {{ flashMessage('notification') }} </span>
-                    @endif
-                    <div class="field {{hasErrorFor('email')?"error":""}}">
-                        <label>Email</label>
-                        <input type="email" name="email" placeholder="Email" value="{{ old('email', '') }}" />
-                        @if(hasErrorFor('email'))
-                        <span class=" ui mini pointing red basic label">
-                            {{ getErrorFor('email') }}
-                        </span>
-                        @endif
-                    </div>
-                    <div class="field {{hasErrorFor('password')?"error":""}}">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="password"
-                            value="{{ old('password', '') }}" />
-                        @if(hasErrorFor('password'))
-                        <span class=" ui mini pointing red basic label">
-                            {{ getErrorFor('password') }}
-                        </span>
-                        @endif
-                    </div>
 
-                    <a href="/" class="forgot_password">Forgot Password</a>
-                    <div class="login_btn">
-                        <button class="ui  button " type="submit">Login</button>
+<div class="ui grid">
+    <div class="three wide column"></div>
 
-                    </div>
-                </form>
+    <div class="ten wide column">
+        <div class="login_register">
+            <div>
+                <div class=" ui top attached tabular menu">
+                    <a class="item active" href="{{route('login.create')}}" data-tab="fourth">Returning Customer</a>
+                    <a class="item" href="{{route('register.create')}}">New Customer</a>
+                </div>
+                <div class="ui tab active  segment" data-tab="fourth">
+                    <p>Login if you are returning customer</p>
+                    <form class="ui form" action="{{route('login.store')}}" method="POST">
+                        {{ csrfField() }}
+                        @if(flashMessage('notification'))
+                        <span> {{ flashMessage('notification') }} </span>
+                        @endif
+                        <div class="field {{hasErrorFor('email')?"error":""}}">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Email" value="{{ old('email', '') }}" />
+                            @if(hasErrorFor('email'))
+                            <span class=" ui mini pointing red basic label">
+                                {{ getErrorFor('email') }}
+                            </span>
+                            @endif
+                        </div>
+                        <div class="field {{hasErrorFor('password')?"error":""}}">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="password"
+                                value="{{ old('password', '') }}" />
+                            @if(hasErrorFor('password'))
+                            <span class=" ui mini pointing red basic label">
+                                {{ getErrorFor('password') }}
+                            </span>
+                            @endif
+                        </div>
+
+                        <a href="/" class="forgot_password">Forgot Password</a>
+                        <div class="login_btn">
+                            <button class="ui  button " type="submit">Login</button>
+
+                        </div>
+                    </form>
+                </div>
 
             </div>
-            <div class="column"></div>
         </div>
-
     </div>
+    <div class="three wide column"></div>
+</div>
+
 
 </div>
 

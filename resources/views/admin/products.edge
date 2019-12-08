@@ -1,0 +1,57 @@
+@layout('layout.dashboard_layout')
+@section('content')
+<div class="seller_product_wrapper dashboard_top_menu">
+
+    <h2 class="ui header">Sellers</h2>
+    <div class="ui divider"></div>
+    <table class="ui celled table example" style="width:100%">
+        <thead>
+            <tr>
+
+                <th>Title</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Seller</th>
+                <th>Company</th>
+                <th>Available</th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @each(product in products)
+            <tr>
+                <td>{{product.title}}</td>
+                <td>{{product.subcategory.category.name}}</td>
+                <td>{{product.subcategory.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.seller.first_name}}</td>
+                <td>{{product.seller.company_name}}</td>
+                <td>
+                    @if(product.is_available)
+                    <i class="check icon" style="color:#21ba45!important"></i>
+                    @else
+                    <i class="delete icon" style="color:#db2828!important"></i>
+                    @endif
+                </td>
+
+
+
+
+            </tr>
+            @endeach
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+@endsection

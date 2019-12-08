@@ -1,0 +1,156 @@
+@layout('layout.dashboard_layout')
+
+@section('content')
+<h2 class="ui header">Edit Your Details</h2>
+<div class="form_wrapper">
+
+    <form class="ui form" method="POST" action="/customer/dashboard/address/edit?_method=PUT">
+        {{ csrfField() }}
+        <div class="field">
+
+            <div class="two fields">
+                <div class="field ">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder=" Name" value="{{ old('name', '') }}">
+                    @if(hasErrorFor('name'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('name') }}
+                    </span>
+                    @endif
+                </div>
+                <div class="field ">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone" placeholder="Phone number" value="{{ old('phone', '') }}">
+                    @if(hasErrorFor('phone'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('phone') }}
+                    </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <h4 class="ui dividing header" style="margin-top:25px;font-size:16px ">Shipping Information</h4>
+        <div class="field ">
+
+            <div class="fields">
+                <div class="ten wide field ">
+                    <label>Address</label>
+                    <input type="text" name="address" placeholder="Street Address" id="shipping_address"
+                        value="{{ old('address', '') }}">
+                    @if(hasErrorFor('address'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('address') }}
+                    </span>
+                    @endif
+                </div>
+
+                <div class="six wide field ">
+                    <label>State</label>
+                    <input type="text" name="state" placeholder="State" id="shipping_state"
+                        value="{{ old('state', '') }}">
+                    @if(hasErrorFor('state'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('state') }}
+                    </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field ">
+                <label>City</label>
+                <input type="text" name="city" placeholder="City" id="shipping_city" value="{{ old('city', '') }}">
+                @if(hasErrorFor('city'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('city') }}
+                </span>
+                @endif
+            </div>
+            <div class="field ">
+                <label>Zip Code</label>
+                <input type="text" name="area" placeholder="Zip Code" id="shipping_area" value="{{ old('area', '') }}">
+                @if(hasErrorFor('area'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('area') }}
+                </span>
+                @endif
+            </div>
+
+            <div class="field ">
+                <label>Country</label>
+                <input type="text" name="country" placeholder="Country" id="shipping_country"
+                    value="{{ old('country', '') }}">
+                @if(hasErrorFor('country'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('country') }}
+                </span>
+                @endif
+            </div>
+        </div>
+
+
+        <h4 class="ui dividing header " style="margin-top:25px;font-size:16px ">Billing Information</h4>
+        <div class="field">
+
+            <div class="fields">
+                <div class="ten wide field ">
+                    <label>Address</label>
+                    <input type="text" name="_address" placeholder="Street Address" id="billing_address"
+                        value="{{ old('_address', '') }}">
+                    @if(hasErrorFor('_address'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('_address') }}
+                    </span>
+                    @endif
+                </div>
+                <div class="six wide field ">
+                    <label>State</label>
+                    <input type="text" name="_state" placeholder="State" id="billing_state"
+                        value="{{ old('_state', '') }}">
+                    @if(hasErrorFor('_state'))
+                    <span class=" ui mini pointing red basic label">
+                        {{ getErrorFor('_state') }}
+                    </span>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <div class="three fields">
+            <div class="field ">
+                <label>Zip Code</label>
+                <input type="text" name="_area" placeholder="County" id="billing_area" value="{{ old('_area', '') }}">
+                @if(hasErrorFor('_area'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('_area') }}
+                </span>
+                @endif
+            </div>
+            <div class="field  ">
+                <label>City</label>
+                <input type="text" name="_city" placeholder="County" id="billing_city" value="{{ old('_city', '') }}">
+                @if(hasErrorFor('_city'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('_city') }}
+                </span>
+                @endif
+            </div>
+            <div class="field ">
+                <label>Country</label>
+                <input type="text" name="_country" placeholder="Country" id="billing_country"
+                    value="{{ old('_country', '') }}">
+                @if(hasErrorFor('_country'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('_country') }}
+                </span>
+                @endif
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="ui button btn_submit">Edit Your details</button>
+    </form>
+</div>
+
+
+@endsection

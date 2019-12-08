@@ -57,12 +57,23 @@ header {
 .search .button:hover {
   background: var(--green-color);
 }
-
+.nav_category a.item {
+  color: #fff !important;
+}
 /* End header */
 /* login and register */
 .login_register {
   margin: 18px 0;
 }
+.login_register .tab {
+  padding: 32px;
+}
+.login_register div.active,
+.login_register .menu a.active,
+.menu .btn_active {
+  background-color: #f8fbfc !important;
+}
+
 .login_register .ui.segment {
   min-height: auto !important;
 }
@@ -91,6 +102,9 @@ header {
 /* hero image */
 .hero_image {
   padding: 0 !important;
+  background-color: #8bc34a !important;
+  border-radius: 0 !important;
+  border: 0 !important;
 }
 .hero_image .banner {
   height: 400px;
@@ -284,6 +298,20 @@ header {
 }
 .form_wrapper {
   padding: 12px;
+}
+input:focus {
+  border: 1px solid #8bc34a !important;
+  background-color: #fff !important;
+  color: black;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: grey !important;
+}
+
+.form_wrapper .btn_submit {
+  background: #8bc34a !important;
+  color: #fff !important;
 }
 
 .seller_product_wrapper .breadcrumb {
@@ -521,6 +549,10 @@ div.dashbord_menu a.item {
   display: flex;
   justify-content: space-between;
   margin-top: 138px;
+}
+/* checkout */
+.checkout_btn_wrapper {
+  background-color: #f8fbfc;
 }
 
 footer .vertical {

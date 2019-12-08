@@ -101,9 +101,19 @@ Route.group(() => {
   Route.get("/customers", "Admin/DashboardController.customers").as(
     "admin.customers"
   );
+  Route.get("/products", "Admin/DashboardController.products").as(
+    "admin.products"
+  );
 }).prefix("/admin/dashboard");
 // Customer
 Route.group(() => {
+  Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");
+  Route.get("/address/edit", "Customer/AddressController.create").as(
+    "customer.address.create"
+  );
+  Route.put("/address/edit", "Customer/AddressController.store")
+    .as("customer.address.edit")
+    .validator(["Address"]);
   Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");
 })
   .prefix("/customer/dashboard")

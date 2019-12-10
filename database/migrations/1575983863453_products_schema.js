@@ -11,7 +11,8 @@ class ProductsSchema extends Schema {
         .integer("subcategory_id")
         .unsigned()
         .references("id")
-        .inTable("subcategories");
+        .inTable("subcategories")
+        .onDelete("CASCADE");
 
       table
         .integer("seller_id")
@@ -25,6 +26,7 @@ class ProductsSchema extends Schema {
       table.integer("quantity").notNullable();
       table.boolean("is_available").defaultTo(true);
       table.boolean("is_achieved").defaultTo(false);
+      table.string("slug", 255).notNullable();
       table.timestamps();
     });
   }

@@ -14,6 +14,7 @@ class ImagesSchema extends Schema {
         .inTable("products")
         .onDelete("CASCADE");
       table.string("image").defaultTo("image link");
+      table.string("url", 255);
       table.timestamps();
     });
   }

@@ -1,0 +1,33 @@
+@layout('layout.dashboard_layout')
+
+@section('content')
+<h3>My Last Orders</h3>
+
+<div class="ui very relaxed divided list">
+    @each(order in orders)
+    <div class="item">
+        <div class="content">
+            <div class="ui grid">
+
+                <div class="fourteen wide column">
+                    <a class="header">Order number: {{order.id}}</a>
+                    <div class="description">
+                        Has been order
+                        {{ moment(order.created_at).fromNow()}}
+
+                    </div>
+                </div>
+                <div class="two wide column">
+                    <span style="font-weight:700 !important"> Total: {{order.total}}</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    @endeach
+
+
+</div>
+
+@endsection

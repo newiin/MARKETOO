@@ -5,12 +5,12 @@
 <main>
 
     <div class="container ui">
-        <div class="ui breadcrumb">
+        <div class="ui breadcrumb" style="margin-top:27px">
             <a class="section">Home</a>
             <div class="divider">/</div>
-            <a class="section">Store</a>
+            <a class="section">Product</a>
             <div class="divider">/</div>
-            <div class="active section">T-Shirt</div>
+            <div class="active section">Details</div>
         </div>
         <div class="ui grid">
             <div class="four wide column detail_sidebar">
@@ -45,11 +45,12 @@
             </div>
             <div class="twelve wide column product_details_content">
                 <div class="product_title">
-                    <p>{{product.title}}</p>
+                    <h3 class="margin-bottom:15px">{{product.title}}</h3>
                 </div>
                 <div class="ui grid ">
                     <div class="row">
                         <div class="twelve wide column">
+
                             <div class="demo">
                                 <ul id="vertical">
                                     @each(image in product.images)
@@ -75,14 +76,32 @@
 
                                 </ul>
                             </div>
+                            <div class=" text" style="margin-top:25px">
+                                <h3>Decription</h3>
+                                <p class="product_description">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat quam dolor sed
+                                    quibusdam eos quas suscipit quaerat necessitatibus maiores quae amet beatae alias
+                                    dicta praesentium, autem asperiores corrupti reprehenderit voluptate est? Optio
+                                    autem architecto rerum facere sed similique fugit, nulla dolores dolore earum ad
+                                    sint veniam reiciendis obcaecati perspiciatis sapiente doloremque facilis, vel quae
+                                    laborum dicta non maiores. Maiores, beatae? Eum, velit? Natus quaerat laboriosam
+                                    officiis animi quae nam veniam velit doloribus aliquid quisquam. Assumenda, deleniti
+                                    at suscipit in labore tempore, qui laborum nobis illum praesentium itaque mollitia
+                                    reiciendis, temporibus dolorem voluptates error alias nisi? Deserunt ex ab delectus
+                                    obcaecati.
+                                </p>
+
+                            </div>
                         </div>
+
 
                         <div class="four wide column">
                             <div class="ui segment product_action">
 
-                                <a class="ui left corner label">
-                                    <i class="heart icon"></i>
-                                </a>
+                                <div class="ui left corner label love " href="/" data-content="Add to whislist"
+                                    data-variation="mini" data-product_id="{{product.id}}">
+                                    <i class="heart icon" style="color:#c8232c" id="heart"></i>
+                                </div>
                                 <div class="product_price">
                                     <span> $ {{product.price}}</span>
                                 </div>
@@ -115,47 +134,94 @@
 
             </div>
         </div>
-        <div class="ui divider"></div>
-        <p>Some products From Carlos Barbier</p>
-        <div class="twelve wide column category_content">
-            <div class="ui grid stackable ">
-                @each(product in products)
-                <div class="four wide column">
-                    <div class="ui special cards">
-                        <div class="card">
-                            <div class="blurring dimmable image">
-                                <div class="ui dimmer">
+        <section>
+            <div class="feature_product_wrapper">
+                <div class="section_heading">
+                    <h3>Some Products From {{product.seller.first_name}}</h3>
+                    <div class="ui divider"></div>
+                </div>
+
+                <div class="ui equal width aligned  grid top_seller">
+                    <div class="row">
+                        <div class="column">
+                            <div class="ui cards">
+                                <div class="card">
+                                    <div class=" image">
+                                        <img src="../images/team.jpg" />
+                                    </div>
                                     <div class="content">
-                                        <div class="center add_product_to_card" data-product_id="{{product.id}}">
-                                            <div class="ui  button add_to_card mini">
-                                                Add To Cart
-                                            </div>
+                                        <div><a class="ui small header category">Team Fu</a></div>
+                                        <div class="title">
+                                            <a href="">
+                                                <span> Prenium Woods</span>
+                                            </a>
                                         </div>
+                                        <div class="price">$ 22</div>
                                     </div>
                                 </div>
-                                <img src="{{product.images[0].url}}" />
-                            </div>
-                            <div class="content">
-                                <div>
-                                    <a class="ui small header category">Team Fu</a>
-                                </div>
-                                <div class="title">
-                                    <a href="/product/{{product.slug}}">
-                                        <span> {{product.title}}</span>
-                                        <i class="angle right icon"></i></a>
-                                </div>
-                                <div class="price">$ {{product.price}}</div>
                             </div>
                         </div>
+                        <div class="column">
+                            <div class="ui cards">
+                                <div class="card">
+                                    <div class=" image">
+                                        <img src="../images/team.jpg" />
+                                    </div>
+                                    <div class="content">
+                                        <div><a class="ui small header category">Team Fu</a></div>
+                                        <div class="title">
+                                            <a href="">
+                                                <span> Prenium Woods</span>
+                                            </a>
+                                        </div>
+                                        <div class="price">$ 22</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui cards">
+                                <div class="card">
+                                    <div class=" image">
+                                        <img src="../images/team.jpg" />
+                                    </div>
+                                    <div class="content">
+                                        <div><a class="ui small header category">Team Fu</a></div>
+                                        <div class="title">
+                                            <a href="">
+                                                <span> Prenium Woods</span>
+                                            </a>
+                                        </div>
+                                        <div class="price">$ 22</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="ui cards">
+                                <div class="card">
+                                    <div class=" image">
+                                        <img src="../images/team.jpg" />
+                                    </div>
+                                    <div class="content">
+                                        <div><a class="ui small header category">Team Fu</a></div>
+                                        <div class="title">
+                                            <a href="">
+                                                <span> Prenium Woods</span>
+                                                <i class="angle right icon"></i></a>
+                                        </div>
+                                        <div class="price">$ 22</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
                 </div>
-                @endeach
-
-
 
             </div>
-
-        </div>
+        </section>
     </div>
 </main>
 @endsection

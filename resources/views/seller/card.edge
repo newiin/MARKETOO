@@ -1,0 +1,84 @@
+<h4 class="ui dividing header">Credit Card Information</h4>
+<div class="field">
+    <label>Card Type</label>
+    <div class="ui selection dropdown">
+        <input type="hidden" name="card_type">
+        <div class="default text">Type</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            <div class="item" data-value="visa">
+                <i class="cc visa icon"></i>
+                Visa
+            </div>
+            <div class="item" data-value="amex">
+                <i class="cc amex icon"></i>
+                American Express
+            </div>
+            <div class="item" data-value="mastercad">
+                <i class="cc mastercard icon"></i>
+                Discover
+            </div>
+        </div>
+
+    </div>
+    @if(hasErrorFor('card_type'))
+    <span class=" ui mini pointing red basic label">
+        {{ getErrorFor('card_type') }}
+    </span>
+    @endif
+</div>
+<div class="fields">
+    <div class="seven wide field">
+        <label>Card Number</label>
+        <input type="text" name="_number" placeholder="Card #">
+        @if(hasErrorFor('card_number'))
+        <span class=" ui mini pointing red basic label">
+            {{ getErrorFor('card_number') }}
+        </span>
+        @endif
+    </div>
+    <div class="three wide field">
+        <label>CVC</label>
+        <input type="text" name="card_cvc" maxlength="3" placeholder="CVC">
+        @if(hasErrorFor('card_cvc'))
+        <span class=" ui mini pointing red basic label">
+            {{ getErrorFor('card_cvc') }}
+        </span>
+        @endif
+    </div>
+    <div class="six wide field">
+        <label>Expiration</label>
+        <div class="two fields">
+            <div class="field">
+                <select class="ui fluid search dropdown" name="card_expire_month">
+                    <option value="">Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                @if(hasErrorFor('card_expire_month'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('card_expire_month') }}
+                </span>
+                @endif
+            </div>
+            <div class="field">
+                <input type="text" name="card_year" maxlength="4" placeholder="Year">
+                @if(hasErrorFor('card_expire_year'))
+                <span class=" ui mini pointing red basic label">
+                    {{ getErrorFor('card_expire_year') }}
+                </span>
+                @endif
+            </div>
+        </div>
+    </div>
+</div>

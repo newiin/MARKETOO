@@ -16,9 +16,7 @@ class User extends Model {
       }
     });
   }
-  static get hidden() {
-    return ["password"];
-  }
+
   static get visible() {
     return ["email"];
   }

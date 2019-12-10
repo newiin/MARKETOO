@@ -2,34 +2,57 @@
 const Card = use("App/Models/Card");
 const Seller = use("App/Models/Seller");
 const User = use("App/Models/User");
-const Image = use("App/Models/Image");
-const collect = require("collect.js");
-const Drive = use("Drive");
-
 class DashboardController {
-  async index({ request, view, response, auth, session }) {
+  async index({ view, auth, session }) {
     return view.render("seller.dashboard");
   }
   async edit({ view }) {
     return view.render("seller.edit_profile");
   }
 
-  async update({ request, response }) {
+  async update({ request, response, auth, session }) {
     const {
-      shipping: { first_name, last_name },
-      card: { number, type }
-    } = request.except(["csrf_token", "_method"]);
+      first_name,
+      last_name,
+      company_name,
+      phone,
+      company_description,
+      _address,
+      _state,
+      _city,
+      _country
+    } = request.all();
+    const user = await auth.getUser();
+    await user.profile().update({
+      first_name,
+      last_name,
+      company_name,
+      phone,
+      company_description,
+      address: _address,
+      state: _state,
+      city: _city,
+      country: _country
+    });
+    session.flash({
+      notification: {
+        type: "success",
+        message: `Your Profile has been updated`
+      }
+    });
+    response.route("seller.dashboard");
     try {
-      const user = await User.find(1);
-      await user
-        .cards()
-        .create({ card_number: number, user_id: user.id, type });
-      await user.profile().update({ first_name, last_name });
     } catch (error) {
       console.log(error);
-    }
 
-    response.redirect("back");
+      session.flash({
+        notification: {
+          type: "negative",
+          message: `Something went wrong`
+        }
+      });
+      response.redirect("back");
+    }
   }
 }
 

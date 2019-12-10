@@ -26,12 +26,17 @@ Route.post("/seller/register", "Seller/RegisterController.store").validator([
 ]);
 
 // Shopping cart
-Route.get("/shopping/checkout", "CheckoutController.index").as("checkout");
-Route.get("/shopping/charge", "PaymentController.index").as("payment.create");
-Route.post("shopping/charge", "PaymentController.store").as("payment.store");
+Route.post("/shopping/checkout", "CheckoutController.checkout").as("checkout");
 Route.get("/cart/add/:id", "CartController.addItemToCart");
 Route.get("/cart/remove/:id", "CartController.removeItemFromCart");
 Route.get("/cart/change/:id", "CartController.changeQuantityFromCart");
+Route.get("/my/cart", "CartController.myShoppingCart").as("my.cart");
+Route.get("/cart/charge", "PaymentController.index")
+  .as("payment.create")
+  .middleware(["customer"]);
+Route.post("cart/charge", "PaymentController.store")
+  .as("payment.store")
+  .middleware(["customer"]);
 
 // Seller dashboard
 Route.group(() => {
@@ -39,9 +44,9 @@ Route.group(() => {
   Route.get("/profile/edit", "Seller/DashboardController.edit").as(
     "seller.edit.profile"
   );
-  Route.put("/profile/edit", "Seller/DashboardController.update").as(
-    "seller.edit.update"
-  );
+  Route.put("/profile/edit", "Seller/DashboardController.update")
+    .as("seller.edit.update")
+    .validator(["SellerInfo"]);
   Route.get("/product/", "Seller/ProductController.index").as(
     "seller.product.index"
   );
@@ -115,6 +120,26 @@ Route.group(() => {
     .as("customer.address.edit")
     .validator(["Address"]);
   Route.get("/", "Customer/DashboardController.index").as("customer.dashboard");
+  Route.get("/orders", "Customer/DashboardController.orders").as(
+    "customer.orders"
+  );
+  Route.get("/password", "Customer/PasswordController.edit").as(
+    "customer.password.edit"
+  );
+  Route.put("/password", "Customer/PasswordController.update")
+    .as("customer.password.update")
+    .validator(["Password"]);
 })
   .prefix("/customer/dashboard")
   .middleware(["customer"]);
+// whislist
+Route.get("/product/whishlist/add/:id", "Customer/WhislistController.add").as(
+  "whislist.add"
+);
+Route.get("/whishlist/products", "Customer/WhislistController.index").as(
+  "whishlist"
+);
+Route.get(
+  "/product/whishlist/remove/:id",
+  "Customer/WhislistController.removeItemFromWhishList"
+).as("whishlist.remove");

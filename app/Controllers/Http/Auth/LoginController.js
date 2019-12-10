@@ -1,7 +1,7 @@
 "use strict";
 const User = use("App/Models/User");
 class LoginController {
-  async create({ request, view, response }) {
+  async create({ view }) {
     return view.render("auth.login");
   }
 
@@ -12,7 +12,7 @@ class LoginController {
       if (user.userable_type === "customers") {
         const get_user = await User.findBy("email", user.email);
         const user_found = await get_user.profile().fetch();
-        if (user_found.is_updated_profile === 1) {
+        if (session.get("checkout")) {
           response.route("payment.create");
         } else {
           response.route("customer.dashboard");

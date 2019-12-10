@@ -3,7 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use("Schema");
 
-class ProductSchema extends Schema {
+class ProductsSchema extends Schema {
   up() {
     this.create("products", table => {
       table.increments();
@@ -12,17 +12,19 @@ class ProductSchema extends Schema {
         .unsigned()
         .references("id")
         .inTable("subcategories");
+
       table
         .integer("seller_id")
         .unsigned()
         .references("id")
-        .inTable("sellers");
+        .inTable("sellers")
+        .onDelete("CASCADE");
       table.string("title", 225).notNullable();
       table.string("description", 225).notNullable();
       table.string("price", 225).notNullable();
       table.integer("quantity").notNullable();
       table.boolean("is_available").defaultTo(true);
-      table.string("picture", 225).notNullable();
+      table.boolean("is_achieved").defaultTo(false);
       table.timestamps();
     });
   }
@@ -32,4 +34,4 @@ class ProductSchema extends Schema {
   }
 }
 
-module.exports = ProductSchema;
+module.exports = ProductsSchema;

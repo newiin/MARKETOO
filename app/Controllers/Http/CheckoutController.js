@@ -3,14 +3,18 @@ const ls = require("local-storage");
 const Helpers = use("Helpers");
 const store = require("store");
 class CheckoutController {
-  async index({ request, view, response, session }) {
-    if (session.get("cart")) {
-      const items = session.get("cart");
-      const total = session.get("total");
-      return view.render("checkout", { items, total });
+  async checkout({ request, response, session, auth }) {
+    try {
+      const user = await auth.getUser();
+      if (user && user.userable_type === "customers") {
+        response.route("payment.create");
+      }
+    } catch (error) {
+      session.put("checkout", true);
+      const checkout = session.get("checkout");
+      store.set("checkout", true);
+      response.route("login.create");
     }
-
-    return view.render("checkout");
   }
 }
 

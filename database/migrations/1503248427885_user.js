@@ -12,7 +12,6 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.string("password", 60).notNullable();
-      table.string("role", 60).notNullable();
       table.boolean("is_verified").defaultTo(false);
       table.integer("userable_id").unsigned();
       table.string("userable_type");

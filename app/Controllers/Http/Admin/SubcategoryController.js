@@ -14,7 +14,6 @@ class SubcategoryController {
           message: error
         }
       });
-      console.log(error);
 
       response.redirect("back");
     }
@@ -32,7 +31,7 @@ class SubcategoryController {
     const { name, category } = request.all();
     const slug = await sanitizor.slug(name);
     try {
-      await Subcategory.create({ name, category_id: category, slug });
+      await Subcategory.create({ name, slug, category_id: category });
       session.flash({
         notification: {
           type: "success",
@@ -41,6 +40,8 @@ class SubcategoryController {
       });
       response.redirect("back");
     } catch (error) {
+      console.log(error);
+
       session.flash({
         notification: {
           type: "danger",

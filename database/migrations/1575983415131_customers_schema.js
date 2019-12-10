@@ -5,7 +5,9 @@ const Schema = use("Schema");
 
 class CustomersSchema extends Schema {
   up() {
-    this.table("customers", table => {
+    this.create("customers", table => {
+      table.increments();
+      table.string("name", 80);
       table.string("address", 255);
       table.string("city", 80);
       table.string("state", 80);
@@ -19,13 +21,12 @@ class CustomersSchema extends Schema {
       table.string("shipping_city", 80);
       table.string("shipping_state", 80);
       table.string("shipping_country", 80);
+      table.timestamps();
     });
   }
 
   down() {
-    this.table("customers", table => {
-      // reverse alternations
-    });
+    this.drop("customers");
   }
 }
 

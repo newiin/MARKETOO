@@ -11,23 +11,20 @@
         href="{{route('customer.edit.profie')}}">
         Edit Profile
     </a>
-    <a class="item">
+    <a class="item {{url=="/customer/dashboard/password" ? "active":""}} {{urlpath ? " active":""}}"
+        href="{{route('customer.password.edit')}}">
         Change password
     </a>
-    <a class="item">
-        Messages
+    <a class="item {{url=="/customer/dashboard/orders" ? "active":""}} {{urlpath ? " active":""}}"
+        href="{{route('customer.orders')}}">
+        Orders
     </a>
     <a class="item">
-        Friends
+        Whishlist
     </a>
     <a class="item">
-        Home
+        Change My email
     </a>
-    <a class="item">
-        Messages
-    </a>
-    <a class="item ">
-        Friends
-    </a>
+
 
 </div>

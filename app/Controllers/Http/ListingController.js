@@ -13,14 +13,14 @@ class ListingController {
         .with("images")
         .with("subcategory.category")
         .fetch();
-
       const subcategories = await category
         .subcategories()
         .withCount("products as total_products")
         .fetch();
       return view.render("products_listings.index", {
         products: products.toJSON(),
-        subcategories: subcategories.toJSON()
+        subcategories: subcategories.toJSON(),
+        category: category.toJSON()
       });
     } catch (error) {}
   }
@@ -42,9 +42,7 @@ class ListingController {
       const {
         seller: { first_name }
       } = product.toJSON()[0];
-
       const logo = first_name.toUpperCase().charAt(0);
-
       return view.render("products_listings.details", {
         product: product.toJSON()[0],
         logo

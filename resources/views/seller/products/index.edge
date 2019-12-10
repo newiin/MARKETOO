@@ -16,9 +16,9 @@
     <div class="ui four cards">
         <div class="ui card card_product">
             <div class="content">
-                <div class="header">Total Product</div>
-                <div class="meta">
-                    <h3>425</h3>
+                <div class="header" style="text-align:center">Total Product</div>
+                <div class="meta" style="text-align:center">
+                    <h3>{{total}}</h3>
 
                 </div>
                 <p></p>
@@ -26,8 +26,8 @@
         </div>
         <div class="ui card">
             <div class="content">
-                <div class="header">Total Sale</div>
-                <div class="meta">
+                <div class="header" style="text-align:center">Total Sale</div>
+                <div class="meta" style="text-align:center">
                     <span>452</span>
 
                 </div>
@@ -36,9 +36,9 @@
         </div>
         <div class="ui card">
             <div class="content">
-                <div class="header">Active Product</div>
-                <div class="meta">
-                    <span>258</span>
+                <div class="header" style="text-align:center">Active Product</div>
+                <div class="meta" style="text-align:center">
+                    <h3>{{total}}</h3>
 
                 </div>
                 <p></p>
@@ -46,8 +46,8 @@
         </div>
         <div class="ui card">
             <div class="content">
-                <div class="header">Pending Product</div>
-                <div class="meta">
+                <div class="header" style="text-align:center">Active Product</div>
+                <div class="meta" style="text-align:center">
                     <span>425</span>
 
                 </div>
@@ -59,107 +59,30 @@
     <table id="example" class="ui celled table" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-                <th>Action</th>
+                <th>Product Title</th>
+                <th>Price</th>
+                <th>Quantite</th>
+                <th>Added</th>
+
 
             </tr>
         </thead>
         <tbody>
+            @each(product in products)
+            <tr>
+                <td>{{product.title}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{ moment(order.created_at).fromNow()}}</td>
 
-            <tr>
-                <td>Tatyana Fitzpatrick</td>
-                <td>Regional Director</td>
-                <td>London</td>
-                <td>19</td>
-                <td>2010/03/17</td>
-                <td>$385,750</td>
-                <td>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                </td>
+
             </tr>
-            <tr>
-                <td>Michael Silva</td>
-                <td>Marketing Designer</td>
-                <td>London</td>
-                <td>66</td>
-                <td>2012/11/27</td>
-                <td>$198,500</td>
-                <td>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>Paul Byrd</td>
-                <td>Chief Financial Officer (CFO)</td>
-                <td>New York</td>
-                <td>64</td>
-                <td>2010/06/09</td>
-                <td>$725,000</td>
-                <td>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>Gloria Little</td>
-                <td>Systems Administrator</td>
-                <td>New York</td>
-                <td>59</td>
-                <td>2009/04/10</td>
-                <td>$237,500</td>
-                <td>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                    <button class="mini ui button">
-                        Mini
-                    </button>
-                </td>
-            </tr>
+            @endeach
+
+
 
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-                <th>Action</th>
-            </tr>
-        </tfoot>
+
     </table>
 
 </div>

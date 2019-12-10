@@ -1,9 +1,22 @@
 $(document).ready(function() {
   $("#context2 .menu .item").tab({
-    // special keyword works same as above
+    context: "parent"
+  });
+  $("#tab .menu .item").tab({
     context: "parent"
   });
   const total = parseInt(localStorage.getItem("total"));
+  if (isNaN(total)) {
+    $("#card_total").text(0);
+  } else {
+    $("#card_total").text(total);
+  }
+  const total_whish = parseInt(localStorage.getItem("total_whish"));
+  if (isNaN(total_whish)) {
+    $("#love_total").text(0);
+  } else {
+    $("#love_total").text(total_whish);
+  }
   $("#card_total").text(total);
   $(".special.cards .image").dimmer({
     on: "hover"
@@ -15,22 +28,6 @@ $(document).ready(function() {
         centered: true,
         closable: false
       })
-      .modal("show");
-  });
-  $("#btn_checkout").click(function(e) {
-    e.preventDefault();
-    $("#shooping_modal")
-      .modal({
-        closable: false,
-        onDeny: function() {
-          window.location.replace("/");
-          return false;
-        },
-        onApprove: function() {
-          window.location.replace("/");
-        }
-      })
-      .modal("Fade Up")
       .modal("show");
   });
 
@@ -47,10 +44,9 @@ $(document).ready(function() {
       .fadeOut();
     setTimeout("location.reload(true);", 3000);
   });
+
   $(".add_product_to_card").click(function(e) {
     e.preventDefault();
-    console.log(e);
-
     const id = $(this).data("product_id");
     $.ajax({
       url: `/cart/add/${id}`,
@@ -59,7 +55,16 @@ $(document).ready(function() {
       success: function({ number_of_items }) {
         localStorage.setItem("total", JSON.stringify(number_of_items));
         const total = parseInt(localStorage.getItem("total"));
-        $("#card_total").text(total);
+        if (isNaN(total)) {
+          $("#card_total").text(0);
+        } else {
+          $("#card_total").text(total);
+        }
+        $("#message_box").css("display", "block");
+        $("#message_box").animate({ right: 0 });
+        setTimeout(() => {
+          $("#message_box").animate({ right: -375 });
+        }, 2000);
       }
     });
   });
@@ -129,13 +134,81 @@ $(document).ready(function() {
     step_size: 0.5,
     initial_value: 0,
     cursor: "default",
-    readonly: false,
-    change_once: false, // Determines if the rating can only be set once
-    ajax_method: "POST",
-    url: "http://localhost/test.php",
-    additional_data: {} // Additional data to send to the server
+    readonly: true,
+    change_once: false
   };
 
   $(".rating").rate(options);
   $("#example").DataTable();
+  $(".love").popup({
+    inline: true
+  });
+  $(".love").popup({
+    inline: true
+  });
+  // whislist
+  $(".love").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+    $.ajax({
+      url: `/product/whishlist/add/${id}`,
+      type: "GET",
+      dataType: "json",
+      success: total => {
+        localStorage.setItem("total_whish", JSON.stringify(total));
+        const total_whish = parseInt(localStorage.getItem("total_whish"));
+        if (isNaN(total_whish)) {
+          $("#love_total").text(0);
+        } else {
+          $("#love_total").text(total_whish);
+        }
+      }
+    });
+  });
+  $(".delete_product_from_whishlist").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+    $.ajax({
+      url: `/product/whishlist/remove/${id}`,
+      type: "GET",
+      dataType: "json",
+      success: function({ total }) {
+        localStorage.setItem("total_whish", JSON.stringify(total));
+        const total_whish = parseInt(localStorage.getItem("total_whish"));
+        if (isNaN(total_whish)) {
+          $("#love_total").text(0);
+        } else {
+          $("#love_total").text(total_whish);
+        }
+        e.target.parentElement.parentElement.remove();
+      }
+    });
+  });
+  $(".add_product_from_whishlist_to_card").click(function(e) {
+    e.preventDefault();
+    const id = $(this).data("product_id");
+    const total_whish = parseInt(localStorage.getItem("total_whish") - 1);
+    localStorage.setItem("total_whish", JSON.stringify(total_whish));
+    $("#love_total").text(total_whish);
+    if (isNaN(total)) {
+      $("#card_total").text(0);
+    } else {
+      $("#card_total").text(total);
+    }
+    $.ajax({
+      url: `/cart/add/${id}`,
+      type: "GET",
+      dataType: "json",
+      success: function() {
+        $.ajax({
+          url: `/product/whishlist/remove/${id}`,
+          type: "GET",
+          dataType: "json",
+          success: () => {
+            e.target.parentElement.parentElement.remove();
+          }
+        });
+      }
+    });
+  });
 });

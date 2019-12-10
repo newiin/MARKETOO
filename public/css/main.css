@@ -15,7 +15,7 @@ body {
 }
 /* header  */
 header {
-  padding: 25px 0;
+  padding: 25px 0 0 0;
 }
 .action {
   margin-left: 215px;
@@ -30,11 +30,12 @@ header {
 .right .button {
   margin-right: 16px !important;
 }
-.menu .like,
+.menu .loved,
 .menu .shopping_cart {
   background-color: transparent !important;
 }
-.menu .shopping_cart {
+.menu .shopping_cart,
+.menu .loved {
   font-size: 16px;
   position: relative;
 }
@@ -46,6 +47,13 @@ header {
   top: -2px !important;
   left: 62% !important;
   color: #8bc34a;
+}
+#love_total {
+  position: absolute;
+  top: -2px !important;
+  right: 2% !important;
+  color: #c4302b;
+  font-weight: 800;
 }
 .search input {
   width: 100%;
@@ -105,20 +113,35 @@ header {
   background-color: #8bc34a !important;
   border-radius: 0 !important;
   border: 0 !important;
+  margin-bottom: 0;
 }
 .hero_image .banner {
-  height: 400px;
+  height: 450px;
   width: 100% !important;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/team.jpg");
+  background-image: url("../images/banners-homeIOT-04.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  margin: 0 !important;
+}
+.banner1 {
+  background-image: url("../images/small_banner1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 160px;
+}
+.banner2 {
+  background-image: url("../images/small_banner2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 160px;
 }
 .hero_image .banner p {
   font-size: 36px;
@@ -218,6 +241,7 @@ header {
 #why_become_seller {
   margin: 25px 0;
   padding: 0;
+  background-color: #f8fbfc;
 }
 
 #why_become_seller .column h1 {
@@ -239,6 +263,7 @@ header {
 .feature_product_wrapper {
   margin-top: 28px;
 }
+
 /* category page */
 #category {
   margin: 0;
@@ -420,8 +445,23 @@ input:focus::-webkit-input-placeholder {
   margin-bottom: 18px;
 }
 .seller_about {
+  margin-top: 25px;
   padding: 0 25px;
   text-align: center;
+}
+.become_seller_banner {
+  height: 150px;
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("../images/banner12.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: 0 !important;
 }
 .name_wrapper {
   border-radius: 50%;
@@ -446,9 +486,13 @@ input:focus::-webkit-input-placeholder {
 .product_details_content {
   padding: 35px 0 !important;
 }
-.product_title p {
+.product_title h3 {
   font-size: 18px;
   margin-bottom: 17px;
+}
+.product_description {
+  color: #c0c0c0;
+  font-size: 16px !important;
 }
 .demo {
   width: 620px;
@@ -508,6 +552,56 @@ input:focus::-webkit-input-placeholder {
   background-color: #8bc34a;
   color: #fff;
 }
+.product_action .popup:before {
+  background-color: #8bc34a !important;
+}
+.product_action .popup {
+  background-color: #8bc34a !important;
+  color: #fff !important;
+}
+.product_action .popup .content {
+  color: #fff !important;
+}
+.product_action .love:hover {
+  cursor: pointer;
+}
+#heart:hover {
+  cursor: pointer !important;
+}
+.category_sidebar .menu {
+  border: 0 !important;
+}
+.category_sidebar .list .item {
+  font-size: 18px;
+  font-weight: 300;
+  margin-left: 12px;
+}
+#tab {
+  padding: 1px;
+}
+#tab .secondary a.active {
+  background-color: transparent !important;
+}
+#tab .menu .tab_item:hover {
+  background-color: transparent !important;
+}
+.product_title:hover {
+  color: black !important;
+}
+.btns_wrapper button {
+  color: #fff !important;
+  background-color: #8bc34a !important;
+  height: auto;
+}
+.btns_wrapper button.liked {
+  background-color: transparent !important;
+  color: #8bc34a !important;
+  font-size: 14px;
+}
+.btns_wrapper button.liked i {
+  color: #8bc34a !important;
+  font-size: 14px;
+}
 
 /* end details page */
 /* Dashboard */
@@ -543,6 +637,22 @@ div.dashbord_menu a.item {
   text-align: center;
   width: auto;
 }
+.banner_wrapper {
+  margin-bottom: 18px;
+  background-image: url("../images/banner2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90px;
+  width: 100%;
+}
+.banner_wrapper h3 {
+  position: relative;
+  left: 40%;
+  top: 20%;
+  color: #fff;
+  font-size: 42px;
+  font-weight: 600;
+}
 
 /* footer */
 .footer_wrapper {
@@ -553,6 +663,22 @@ div.dashbord_menu a.item {
 /* checkout */
 .checkout_btn_wrapper {
   background-color: #f8fbfc;
+}
+
+#message_box {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  right: 10px;
+  background-color: #166ca3 !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  border: 0;
+}
+#message_box .description i,
+#message_box .description span {
+  color: #fff !important;
+  font-weight: 600 !important;
 }
 
 footer .vertical {

@@ -3,7 +3,7 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use("Schema");
 
-class ImageSchema extends Schema {
+class ImagesSchema extends Schema {
   up() {
     this.create("images", table => {
       table.increments();
@@ -11,7 +11,8 @@ class ImageSchema extends Schema {
         .integer("product_id")
         .unsigned()
         .references("id")
-        .inTable("products");
+        .inTable("products")
+        .onDelete("CASCADE");
       table.string("image").defaultTo("image link");
       table.timestamps();
     });
@@ -22,4 +23,4 @@ class ImageSchema extends Schema {
   }
 }
 
-module.exports = ImageSchema;
+module.exports = ImagesSchema;

@@ -19,8 +19,8 @@
                             <div class="ui link items divided">
                                 <div class="item">
                                     <div class="ui tiny image">
-                                        <img
-                                            src="https://iotapp1.s3.eu-west-1.amazonaws.com/1573804728238_1573689159980_Elena%20%283%29.jpg">
+
+                                        <img src="{{item.image}}">
                                     </div>
                                     <div class="content">
                                         <div class="header">Stevie Feliciano</div>
@@ -35,24 +35,26 @@
                             </div>
                         </div>
                         <div class="two wide column ">
-                            $ <span class="price_{{item.id}}">{{item.price}}</span>
+                            $ <span class="price_{{item.product_id}}">{{item.price}}</span>
                         </div>
                         <div class="two wide column">
-                            <button class="  ui mini compact icon button reduce_qty" data-product_id="{{item.id}}">
+                            <button class="  ui mini compact icon button reduce_qty"
+                                data-product_id="{{item.product_id}}">
                                 <i class="minus icon"></i>
                             </button>
-                            <span class="qty_{{item.id}}">{{item.qty}}</span>
-                            <button class="ui mini  compact icon button add_qty" data-product_id="{{item.id}}">
+                            <span class="qty_{{item.product_id}}">{{item.qty}}</span>
+                            <button class="ui mini  compact icon button add_qty" data-product_id="{{item.product_id}}">
                                 <i class="add icon"></i>
                             </button>
                         </div>
                         <div class="two wide column ">
 
-                            $ <span class="total_{{item.id}}">{{parseInt(item.price*item.qty).toFixed(2)}}</span>
+                            $ <span
+                                class="total_{{item.product_id}}">{{parseInt(item.price*item.qty).toFixed(2)}}</span>
                         </div>
                         <div class="two wide column">
                             <button class="mini ui negative basic button delete_product_from_cart"
-                                data-product_id="{{item.id}}">delete</button>
+                                data-product_id="{{item.product_id}}">delete</button>
                         </div>
 
 
@@ -73,11 +75,20 @@
 
                                     <p>Subtotal <span id="subtotal">${{total}}</span></p>
                                     <p>Shipping <span>$10</span></p>
+                                    <form method="post" action="{{route('checkout')}}">
+                                        {{ csrfField() }}
+                                        <input type="hidden" name="checkout" value="cart_is_active">
+                                        <button class="ui basic button" type="submit" id="btn_checkout">
 
-                                    <button class="ui basic button " id="btn_checkout">
+                                            Proceed to checkout
+                                        </button>
 
-                                        Proceed to checkout
-                                    </button>
+                                    </form>
+
+
+
+
+
 
 
                                 </div>
@@ -89,23 +100,6 @@
                 </div>
                 <div class="four wide column checkout_add">
 
-                    <div class="ui modal card" id="shooping_modal">
-
-                        <div class="content">
-                            <p>Your inbox is getting full, would you like us to enable automatic archiving of old
-                                messages?</p>
-                        </div>
-                        <div class="actions">
-                            <div class="ui red basic cancel inverted button">
-                                <i class="remove icon"></i>
-                                No
-                            </div>
-                            <div class="ui green ok inverted button">
-                                <i class="checkmark icon"></i>
-                                Yes
-                            </div>
-                        </div>
-                    </div>
 
 
                 </div>

@@ -7,26 +7,18 @@ class RegisterController {
     return view.render("seller.start");
   }
 
-  async store({ request, session, view, response }) {
+  async store({ request, session, view, response, auth }) {
     const { email, password } = request.all();
     const seller = await Seller.create();
     try {
       const seller = await Seller.create();
-      const user = await User.findBy("email", email);
       const seller_user = await seller.user().create({ email, password });
+      await auth.login(seller_user);
       response.route("seller.edit.profile");
     } catch (error) {
       console.log({ error });
     }
   }
-
-  async show({ params, request, response, view }) {}
-
-  async edit({ params, request, response, view }) {}
-
-  async update({ params, request, response }) {}
-
-  async destroy({ params, request, response }) {}
 }
 
 module.exports = RegisterController;

@@ -6,9 +6,21 @@ const Helpers = use("Helpers");
 const Drive = use("Drive");
 const { sanitizor } = use("Validator");
 const Subcategory = use("App/Models/Subcategory");
+const moment = require("moment");
 class ProductController {
-  async index({ request, response, view }) {
-    return view.render("seller.products.index");
+  async index({ auth, response, view }) {
+    try {
+      const user = await auth.user.profile().fetch();
+      const products = await user.products().fetch();
+      const total = await user.products().getCount();
+      return view.render("seller.products.index", {
+        products: products.toJSON(),
+        moment,
+        total
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async create({ request, response, view }) {
@@ -68,17 +80,22 @@ class ProductController {
 
   async imageStore({ params, request, response, session }) {
     const { id } = params;
+    console.log(id);
 
     if (request.ajax()) {
-      request.multipart.file("file", {}, async file => {
-        const url = await Drive.disk("s3").put(
-          new Date().getTime() + "_" + file.clientName,
-          file.stream
-        );
-        const product = await Product.findOrFail(id);
-        await product.images().createMany([{ product_id: product.id, url }]);
-      });
-      await request.multipart.process();
+      try {
+        request.multipart.file("file", {}, async file => {
+          const url = await Drive.disk("s3").put(
+            new Date().getTime() + "_" + file.clientName,
+            file.stream
+          );
+          const product = await Product.findOrFail(id);
+          await product.images().createMany([{ product_id: product.id, url }]);
+        });
+        await request.multipart.process();
+      } catch (error) {
+        console.log(error);
+      }
     }
     session.flash({
       notification: {

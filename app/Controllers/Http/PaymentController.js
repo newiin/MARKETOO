@@ -1,38 +1,50 @@
 "use strict";
 const Stripe = use("Stripe");
+const Order = use("App/Models/Order");
+const Transaction = use("App/Models/Transaction");
 class PaymentController {
-  async index({ request, view, response, auth }) {
+  async index({ view, session, auth }) {
     return view.render("payment.index");
   }
-  async store({ request, view, response, auth }) {
+  async store({ request, view, response, session, auth }) {
     const { stripeToken } = request.all();
-    console.log(stripeToken);
+    const user = await auth.user;
+    const total = session.get("total");
+    const cart = session.get("cart");
 
-    console.log(request.all());
+    Stripe.customers
+      .create({
+        email: user.email,
+        source: stripeToken,
+        description: "customer"
+      })
+      .then(customer => {
+        return Stripe.charges.create({
+          amount: total * 100,
+          description: "Iot-eshop Bill",
+          currency: "eur",
+          customer: customer.id
+        });
+      })
+      .then(charge => {})
+      .then(() => {
+        Order.create({
+          customer_id: user.id,
+          seller_id: cart.seller_id,
+          total: total
+        })
+          .then(order => {
+            order.transactions().createMany(cart);
+          })
+          .then(() => {
+            session.forget("cart");
+          });
+      })
 
-    // Stripe.customers
-    //   .create({
-    //     email: "carlosbarbier@example.com",
-    //     source: stripeToken,
-    //     description: "client"
-    //   })
-    //   .then(customer => {
-    //     return Stripe.charges.create({
-    //       amount: 25000000,
-    //       description: "Sample Charge",
-    //       currency: "eur",
-    //       customer: customer.id
-    //     });
-    //   })
-    //   .then(charge => {
-    //     console.log(charge);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-    // console.log(charge);
-
-    return view.render("payment.index");
+      .catch(err => {
+        console.log(err);
+      });
+    response.redirect("/");
   }
 }
 

@@ -1,0 +1,70 @@
+@layout('layout.layout')
+
+@section('content')
+<main id="checkout">
+    <div class="category_wrapper">
+        <div class="container ui">
+            <div class="ui breadcrumb">
+                <a class="section" href="/">Home</a>
+                <div class="divider">/</div>
+                <a class="section">Whislist</a>
+                <div class="divider">/</div>
+                <div class="active section">Products</div>
+            </div>
+            <div class="ui grid">
+                <div class="twelve wide column checkout_content">
+                    @each(item in items)
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui link items divided">
+                                <div class="item">
+                                    <div class="ui tiny image">
+
+                                        <img src="{{item.image}}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header">Stevie Feliciano</div>
+                                        <div class="description">
+                                            <p>
+                                                {{item.title}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="two wide column ">
+                            $ <span class="price_{{item.product_id}}">{{item.price}}</span>
+                        </div>
+
+
+                        <div class="two wide column">
+                            <button class="mini ui negative basic button delete_product_from_whishlist"
+                                data-product_id="{{item.product_id}}">Remove</button>
+                        </div>
+                        <div class="three wide column">
+                            <button class="mini ui positive basic button add_product_from_whishlist_to_card"
+                                data-product_id="{{item.product_id}}">Add to Cart</button>
+                        </div>
+
+
+
+                    </div>
+                    @endeach
+
+                </div>
+                <div class="four wide column checkout_add">
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</main>
+@endsection

@@ -1,9 +1,6 @@
 const { hooks } = require("@adonisjs/ignitor");
-const _ = require("lodash");
-const collect = require("collect.js");
+
 hooks.after.providersBooted(() => {
-  const Request = use("Adonis/Src/Request");
-  const Exception = use("Exception");
   const Category = use("App/Models/Category");
   const View = use("View");
 

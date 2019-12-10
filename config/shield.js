@@ -135,7 +135,8 @@ module.exports = {
     methods: ["POST", "PUT", "DELETE"],
     filterUris: [
       "/seller/register",
-      "/seller/dashboard/product/create/image/:id"
+      "/seller/dashboard/product/create/image/:id",
+      "/product/whishlist/add/id"
     ],
     cookieOptions: {
       httpOnly: false,

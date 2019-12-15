@@ -21,8 +21,8 @@ class AddressController {
         _area,
         _country
       } = request.all();
-      const user = await auth.getUser();
-      await user.profile().update({
+
+      await auth.user.profile().update({
         address,
         name,
         phone,

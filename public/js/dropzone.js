@@ -1,9 +1,11 @@
 Dropzone.options.dropzoneFrom = {
-  autoProcessQueue: false,
+  autoProcessQueue: true,
+  dictDefaultMessage: "Drop Here!",
   acceptedFiles: "image/*",
   paramName: "file",
-  maxFilesize: 2,
-  parallelUploads: 20,
+  maxFilesize: 2, // MB
+  addRemoveLinks: true,
+  // parallelUploads: 20,
   maxFiles: 20,
   init: function() {
     var submitButton = document.querySelector("#submit_image");

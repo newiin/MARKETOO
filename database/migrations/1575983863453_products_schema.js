@@ -11,15 +11,14 @@ class ProductsSchema extends Schema {
         .integer("subcategory_id")
         .unsigned()
         .references("id")
-        .inTable("subcategories")
-        .onDelete("CASCADE");
+        .inTable("subcategories");
 
       table
         .integer("seller_id")
         .unsigned()
         .references("id")
-        .inTable("sellers")
-        .onDelete("CASCADE");
+        .inTable("sellers");
+
       table.string("title", 225).notNullable();
       table.string("description", 225).notNullable();
       table.string("price", 225).notNullable();

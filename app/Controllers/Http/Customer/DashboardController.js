@@ -6,8 +6,7 @@ class DashboardController {
   }
   async orders({ request, view, response, auth }) {
     try {
-      const user = await auth.getUser();
-      const customer = await user.profile().fetch();
+      const customer = await auth.user.profile().fetch();
       const orders = await customer.orders().fetch();
       return view.render("customer.orders", {
         orders: orders.toJSON(),

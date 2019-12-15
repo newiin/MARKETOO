@@ -1,20 +1,21 @@
 "use strict";
 const Stripe = use("Stripe");
 const Order = use("App/Models/Order");
-const Transaction = use("App/Models/Transaction");
 class PaymentController {
-  async index({ view, session, auth }) {
+  async index({ view, session }) {
     return view.render("payment.index");
   }
   async store({ request, view, response, session, auth }) {
     const { stripeToken } = request.all();
-    const user = await auth.user;
+
+    const customer = await auth.user.profile().fetch();
+
     const total = session.get("total");
     const cart = session.get("cart");
-
+    const email = await auth.user.email;
     Stripe.customers
       .create({
-        email: user.email,
+        email,
         source: stripeToken,
         description: "customer"
       })
@@ -29,21 +30,17 @@ class PaymentController {
       .then(charge => {})
       .then(() => {
         Order.create({
-          customer_id: user.id,
+          customer_id: customer.id,
           seller_id: cart.seller_id,
           total: total
-        })
-          .then(order => {
-            order.transactions().createMany(cart);
-          })
-          .then(() => {
-            session.forget("cart");
-          });
+        }).then(order => {
+          order.transactions().createMany(cart);
+        });
       })
-
       .catch(err => {
         console.log(err);
       });
+    session.forget("cart");
     response.redirect("/");
   }
 }

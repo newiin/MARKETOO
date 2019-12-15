@@ -6,23 +6,35 @@ const Category = use("App/Models/Category");
 class ListingController {
   async index({ request, view, response, session, params }) {
     const { slug } = params;
+
     try {
       const category = await Category.findBy("slug", slug);
-      const products = await category
-        .products()
-        .with("images")
-        .with("subcategory.category")
-        .fetch();
-      const subcategories = await category
-        .subcategories()
-        .withCount("products as total_products")
-        .fetch();
-      return view.render("products_listings.index", {
-        products: products.toJSON(),
-        subcategories: subcategories.toJSON(),
-        category: category.toJSON()
-      });
-    } catch (error) {}
+      // const filters = await Product.query()
+      //   .filter({ subcategory: [1, 2] })
+      //   .fetch();
+      // response.send(filters);
+
+      if (category) {
+        const products = await category
+          .products()
+          .with("images")
+          .with("subcategory.category")
+          .fetch();
+        const subcategories = await category
+          .subcategories()
+          .withCount("products as total_products")
+          .fetch();
+        return view.render("products_listings.index", {
+          products: products.toJSON(),
+          subcategories: subcategories.toJSON(),
+          category: category.toJSON()
+        });
+      } else {
+        response.redirect("back");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   async add({ request, view, response, auth, params }) {
     if (request.ajax()) {

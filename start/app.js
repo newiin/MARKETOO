@@ -23,7 +23,8 @@ const providers = [
   "adonis-lucid-polymorphic/providers/PolymorphicProvider",
   "@adonisjs/validator/providers/ValidatorProvider",
   "@adonisjs/drive/providers/DriveProvider",
-  "adonis-stripe/providers/StripeProvider"
+  "adonis-stripe/providers/StripeProvider",
+  "adonis-lucid-filter/providers/LucidFilterProvider"
 ];
 
 /*

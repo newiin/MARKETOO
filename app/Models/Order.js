@@ -7,8 +7,11 @@ class Order extends Model {
   transactions() {
     return this.hasMany("App/Models/Transaction");
   }
-  customner() {
+  customer() {
     return this.belongsTo("App/Models/Customer");
+  }
+  seller() {
+    return this.belongsTo("App/Models/Seller");
   }
 }
 

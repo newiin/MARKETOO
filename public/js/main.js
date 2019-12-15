@@ -17,7 +17,7 @@ $(document).ready(function() {
   } else {
     $("#love_total").text(total_whish);
   }
-  $("#card_total").text(total);
+
   $(".special.cards .image").dimmer({
     on: "hover"
   });
@@ -155,6 +155,8 @@ $(document).ready(function() {
       type: "GET",
       dataType: "json",
       success: total => {
+        console.log(total);
+
         localStorage.setItem("total_whish", JSON.stringify(total));
         const total_whish = parseInt(localStorage.getItem("total_whish"));
         if (isNaN(total_whish)) {
@@ -211,4 +213,53 @@ $(document).ready(function() {
       }
     });
   });
+  const subcategory = [];
+  $(".subcategory").click(function(e) {
+    const value = this.value;
+    URL_add_parameter(
+      "http://127.0.0.1:3333/category/computers",
+      "category",
+      value
+    );
+    // var url = window.location.href;
+    // if (url.indexOf("?") > -1) {
+    //   url += "&param=1";
+    // } else {
+    //   url += "?param=1";
+    // }
+    // window.location.href = url;
+
+    // $.ajax({
+    //   url: `/category/:${slug}`,
+    //   type: "POST",
+    //   dataType: "json",
+    //   data: { subcategory },
+    //   success: function(data) {}
+    // });
+  });
+  function URL_add_parameter(url, param, value) {
+    var hash = {};
+    var parser = document.createElement("a");
+
+    parser.href = url;
+
+    var parameters = parser.search.split(/\?|&/);
+
+    for (var i = 0; i < parameters.length; i++) {
+      if (!parameters[i]) continue;
+
+      var ary = parameters[i].split("=");
+      hash[ary[0]] = ary[1];
+    }
+
+    hash[param] = value;
+
+    var list = [];
+    Object.keys(hash).forEach(function(key) {
+      list.push(key + "=" + hash[key]);
+    });
+
+    parser.search = "?" + list.join("&");
+    return parser.href;
+  }
 });

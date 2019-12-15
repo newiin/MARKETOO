@@ -114,6 +114,14 @@
     node-exceptions "^3.0.0"
     upcast "^2.1.1"
 
+"@adonisjs/generic-exceptions@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@adonisjs/generic-exceptions/-/generic-exceptions-3.0.1.tgz#57c55a912d72911c614f528a32a4b399feaf6a99"
+  integrity sha512-AHBSvgKj17cQYkj7QL7la8KCB6WeBQPyHlgzX9nimLPY9ViWWmwozuy2skEjsh7+XNIg8vQdZphJyoIf8QzzCQ==
+  dependencies:
+    node-exceptions "^4.0.1"
+    upcast "^4.0.0"
+
 "@adonisjs/ignitor@^2.0.8":
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/@adonisjs/ignitor/-/ignitor-2.0.8.tgz#d4db4f09d8f0ee0e7f9b5030de14135a25a8bf91"
@@ -221,6 +229,13 @@ acorn@^7.0.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.0.tgz#949d36f2c292535da602283586c2477c57eb2d6c"
   integrity sha512-kL5CuoXA/dgxlBbVrflsflzQ3PAas7RYZB52NOm/6839iVYJgKMJ3cQJD+t2i5+qFa8h3MDpEOJiS64E8JLnSQ==
+
+adonis-lucid-filter@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/adonis-lucid-filter/-/adonis-lucid-filter-1.0.5.tgz#2dba3ab4d39409314ab2bfb1140cd1c1fdcfe4ad"
+  integrity sha512-YC8Eznng50RCMRZFGRMRYlW09KQqz9/GsSxL607mvkMusKDWyrdVZGGCWbuF/cr0uTC8hydV+BZqexxTmaaC2Q==
+  dependencies:
+    "@adonisjs/generic-exceptions" "^3.0.1"
 
 adonis-lucid-polymorphic@^1.0.1:
   version "1.0.1"
@@ -1113,6 +1128,11 @@ escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+esm@^3.0.84:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 esprima@^4.0.0:
   version "4.0.1"
@@ -2100,6 +2120,11 @@ node-exceptions@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/node-exceptions/-/node-exceptions-3.0.0.tgz#48b8e10da71370845ef1af583778139527308d11"
   integrity sha512-pFhMAqdN1avrFwtZs66HxYiVnbnH9wjXB4m8IKs5Z9+r7U5voqxT+EDbVkRfge+V7JnkOgKhN4HfKBn1o5g9Wg==
+
+node-exceptions@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/node-exceptions/-/node-exceptions-4.0.1.tgz#70425d17a245c3c00709c72f57c4c20b39ef1a4c"
+  integrity sha512-KJI+FawYOv74x60H6+zrBPfO2vvp9m0pHZi6SH8BBBuc67Irv11DsqY4Le4EBFq1/T5aXFU3hkLrMgtW7RNXxA==
 
 node-guard@^1.0.0:
   version "1.0.0"
@@ -3212,6 +3237,13 @@ upcast@^2.1.1:
   integrity sha512-c+ueM175OVWv9vr1SYA3rI1ao0bxq6Y7l6u5Sac25Hi0yWz9Lz341zt9/sVOa5+7lYcvHMb0xxaacFy/2lVF2w==
   dependencies:
     cross-env "^5.1.0"
+
+upcast@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/upcast/-/upcast-4.0.0.tgz#30c8397a8805be1f40b176f253c78f0f53d108f6"
+  integrity sha512-LS0LmQtEPyyM3Zk4Bb7dNpDVha0xD4Z/Ne3zAqal0hCU/nYjoYU7qic2MPKB+Lu+3h5vKSe2iVqvYnZjmLrAyQ==
+  dependencies:
+    esm "^3.0.84"
 
 urix@^0.1.0:
   version "0.1.0"

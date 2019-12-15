@@ -3,8 +3,11 @@
 const Route = use("Route");
 
 Route.get("/", "HomeController.index").as("main.home");
-Route.get("/category/:slug", "ListingController.index").as("listings.product");
+// Route.get("/category/:slug", "ListingController.index").as("listings.product");
 Route.get("/product/:slug", "ListingController.show").as("listings.show");
+Route.route("/category/:slug", "ListingController.index", ["GET", "POST"]).as(
+  "listings.product"
+);
 
 // user Auth
 Route.get("/auth/register", "Auth/RegisterController.create").as(
@@ -41,6 +44,7 @@ Route.post("cart/charge", "PaymentController.store")
 // Seller dashboard
 Route.group(() => {
   Route.get("/", "Seller/DashboardController.index").as("seller.dashboard");
+  Route.get("/orders", "Seller/OrderController.index").as("seller.orders");
   Route.get("/profile/edit", "Seller/DashboardController.edit").as(
     "seller.edit.profile"
   );
@@ -116,6 +120,8 @@ Route.group(() => {
   Route.get("/address/edit", "Customer/AddressController.create").as(
     "customer.address.create"
   );
+  Route.get("/orders", "Customer/OrderController.index").as("customer.orders");
+
   Route.put("/address/edit", "Customer/AddressController.store")
     .as("customer.address.edit")
     .validator(["Address"]);

@@ -18,6 +18,12 @@ class Seller extends Model {
   products() {
     return this.hasMany("App/Models/Product");
   }
+  orders() {
+    return this.hasMany("App/Models/Order");
+  }
+  transactions() {
+    return this.hasMany("App/Models/Transaction");
+  }
 }
 
 module.exports = Seller;

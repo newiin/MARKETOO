@@ -9,7 +9,6 @@ class RegisterController {
 
   async store({ request, session, view, response, auth }) {
     const { email, password } = request.all();
-    const seller = await Seller.create();
     try {
       const seller = await Seller.create();
       const seller_user = await seller.user().create({ email, password });

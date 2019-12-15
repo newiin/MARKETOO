@@ -34,7 +34,9 @@ class ProductController {
 
   async store({ request, response, session, auth }) {
     try {
-      const user = await auth.getUser();
+      const seller = await auth.user.profile().first();
+      console.log(seller);
+
       const {
         title,
         description,
@@ -43,15 +45,15 @@ class ProductController {
         price
       } = request.all();
       const slug = await sanitizor.slug(title);
-      const product = await Product.create({
+      const product = await seller.products().create({
         title,
         slug,
         description,
         subcategory_id: subcategory,
         quantity,
-        price,
-        seller_id: user.id
+        price
       });
+
       session.flash({
         notification: {
           type: "success",
@@ -80,8 +82,6 @@ class ProductController {
 
   async imageStore({ params, request, response, session }) {
     const { id } = params;
-    console.log(id);
-
     if (request.ajax()) {
       try {
         request.multipart.file("file", {}, async file => {
@@ -90,8 +90,9 @@ class ProductController {
             file.stream
           );
           const product = await Product.findOrFail(id);
-          await product.images().createMany([{ product_id: product.id, url }]);
+          await product.images().createMany([{ url }]);
         });
+
         await request.multipart.process();
       } catch (error) {
         console.log(error);

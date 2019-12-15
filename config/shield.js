@@ -136,7 +136,8 @@ module.exports = {
     filterUris: [
       "/seller/register",
       "/seller/dashboard/product/create/image/:id",
-      "/product/whishlist/add/id"
+      "/product/whishlist/add/id",
+      "/category/:slug"
     ],
     cookieOptions: {
       httpOnly: false,

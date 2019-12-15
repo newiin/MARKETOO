@@ -28,6 +28,7 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
+    "adonis-lucid-filter": "^1.0.5",
     "adonis-lucid-polymorphic": "^1.0.1",
     "adonis-stripe": "^7.8.0",
     "aws-sdk": "^2.570.0",

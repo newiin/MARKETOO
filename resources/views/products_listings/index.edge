@@ -31,14 +31,17 @@
                             <a class="title">
 
                                 <h3>{{category.name}}</h3>
+                                <input type="hidden" id="slug" value="{{category.slug}}">
                             </a>
                             <div class="active content">
                                 <div class="ui form">
                                     <div class="grouped fields">
                                         @each(subcategory in subcategories)
+
                                         <div class="field">
                                             <div class="ui checkbox" style="font-size:16px">
-                                                <input type="checkbox" name="small" />
+                                                <input type="checkbox" class="subcategory" value="{{subcategory.id}}"
+                                                    name='gotoNode' data-arg1='1234' />
                                                 <label>{{ upperFirst(subcategory.name) }}</label>
                                             </div>
                                         </div>
@@ -128,9 +131,12 @@
                                 <div class="sixteen wide column">
                                     <div class="ui items">
                                         <div class="item">
-                                            <div class="image" style="height: auto; width: 200px; overflow: hidden;">
-                                                <img src="{{product.images[0].url}}"
-                                                    style="height:100%;position: absolute; right: 0; bottom: 0;" />
+                                            <div class="image" style="background-image:url('{{product.images[1].url}}');
+                                                background-position: center !important;
+                                                background-repeat: no-repeat !important;
+                                                background-size: cover !important;
+                                                margin: 0 !important;
+                                                ">
                                             </div>
                                             <div class="content">
                                                 <a class="mini header product_title"
@@ -140,11 +146,7 @@
 
                                                 </div>
                                                 <div class="description">
-                                                    <p>{{product.description}}
-                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et
-                                                        liquam odio fugiat aliquid corporis,
-                                                        tempora velit. Est dignissimos atque odit iure.
-                                                    </p>
+
                                                 </div>
                                                 <div class="extra btns_wrapper">
                                                     <button
@@ -235,7 +237,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <img src="{{product.images[0].url}}" style="height:100px" />
+                                                <img src="{{product.images[1].url}}" style="height:100px" />
                                             </div>
                                             <div class="content">
                                                 <div>

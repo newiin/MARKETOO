@@ -18,6 +18,9 @@ class Customer extends Model {
   orders() {
     return this.hasMany("App/Models/Order");
   }
+  transactions() {
+    return this.hasMany("App/Models/Transaction");
+  }
 }
 
 module.exports = Customer;

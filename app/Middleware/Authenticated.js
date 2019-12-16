@@ -5,7 +5,8 @@ class Authenticated {
     try {
       await auth.check();
     } catch (error) {
-      response.route("main.home");
+      auth.logout();
+      response.route("login.create");
     }
     await next();
   }

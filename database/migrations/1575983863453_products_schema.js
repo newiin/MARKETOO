@@ -25,6 +25,7 @@ class ProductsSchema extends Schema {
       table.integer("quantity").notNullable();
       table.boolean("is_available").defaultTo(true);
       table.boolean("is_achieved").defaultTo(false);
+      table.boolean("is_featured").defaultTo(false);
       table.string("slug", 255).notNullable();
       table.timestamps();
     });

@@ -88,6 +88,7 @@ class CartController {
     store.set("total", total);
     const total_topay = store.get("total");
     session.put("total", total_topay);
+
     response.send({ cart, total });
   }
   async myShoppingCart({ session, view, response, auth }) {

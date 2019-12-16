@@ -4,6 +4,9 @@ const Route = use("Route");
 
 Route.get("/", "HomeController.index").as("main.home");
 // Route.get("/category/:slug", "ListingController.index").as("listings.product");
+Route.route("/products/filter", "ListingController.filter", ["GET", "POST"]).as(
+  "listings.product.filter"
+);
 Route.get("/product/:slug", "ListingController.show").as("listings.show");
 Route.route("/category/:slug", "ListingController.index", ["GET", "POST"]).as(
   "listings.product"

@@ -35,7 +35,6 @@ class ProductController {
   async store({ request, response, session, auth }) {
     try {
       const seller = await auth.user.profile().first();
-      console.log(seller);
 
       const {
         title,

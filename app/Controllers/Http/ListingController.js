@@ -6,28 +6,25 @@ const Category = use("App/Models/Category");
 class ListingController {
   async index({ request, view, response, session, params }) {
     const { slug } = params;
-
+    const page = request.get().page || 1;
     try {
       const category = await Category.findBy("slug", slug);
-      // const filters = await Product.query()
-      //   .filter({ subcategory: [1, 2] })
-      //   .fetch();
-      // response.send(filters);
 
       if (category) {
         const products = await category
           .products()
           .with("images")
           .with("subcategory.category")
-          .fetch();
+          .paginate(page, 1);
+
         const subcategories = await category
           .subcategories()
           .withCount("products as total_products")
           .fetch();
         return view.render("products_listings.index", {
-          products: products.toJSON(),
           subcategories: subcategories.toJSON(),
-          category: category.toJSON()
+          category: category.toJSON(),
+          products: products.toJSON()
         });
       } else {
         response.redirect("back");
@@ -50,17 +47,54 @@ class ListingController {
         .where("slug", slug)
         .with("images")
         .with("seller")
-        .fetch();
-      const {
-        seller: { first_name }
-      } = product.toJSON()[0];
-      const logo = first_name.toUpperCase().charAt(0);
-      return view.render("products_listings.details", {
-        product: product.toJSON()[0],
-        logo
-      });
+        .first();
+      if (product) {
+        const seller_similar_products = await Product.query()
+          .with("subcategory.category")
+          .with("images")
+          .with("seller", builder => {
+            builder.where("id", 2);
+          })
+          .limit(4)
+          .fetch();
+
+        const {
+          seller: { first_name }
+        } = product.toJSON();
+        const logo = first_name.toUpperCase().charAt(0);
+        return view.render("products_listings.details", {
+          product: product.toJSON(),
+          logo,
+          seller_similar_products: seller_similar_products.toJSON()
+        });
+      }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async filter({ request, response }) {
+    if (request.ajax()) {
+      let { slug, subcategory, price } = request.all();
+      const category = await Category.findBy("slug", slug);
+      if (typeof subcategory === "undefined") {
+        subcategory = [];
+      }
+      if (category) {
+        subcategory = subcategory.map(item => item * 1);
+        try {
+          const filters = await Product.query()
+            .filter({ subcategory })
+            .with("images")
+            .with("subcategory.category")
+            .fetch();
+          response.status(200).send(filters);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } else {
+      return;
     }
   }
 }

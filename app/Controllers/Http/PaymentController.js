@@ -3,7 +3,11 @@ const Stripe = use("Stripe");
 const Order = use("App/Models/Order");
 class PaymentController {
   async index({ view, session }) {
-    return view.render("payment.index");
+    if (session.get("cart")) {
+      const total = session.get("total");
+
+      return view.render("payment.index", { total });
+    }
   }
   async store({ request, view, response, session, auth }) {
     const { stripeToken } = request.all();
@@ -41,7 +45,11 @@ class PaymentController {
         console.log(err);
       });
     session.forget("cart");
-    response.redirect("/");
+    if (customer.is_updated === 1) {
+      response.route("customer.address.edit");
+    } else {
+      response.redirect("/");
+    }
   }
 }
 

@@ -12,6 +12,12 @@ class TransactionsSchema extends Schema {
         .unsigned()
         .references("id")
         .inTable("orders");
+      table
+        .integer("seller_id")
+        .unsigned()
+        .references("id")
+        .inTable("sellers");
+
       table.integer("product_id").notNullable();
       table.string("title", 80).notNullable();
       table.integer("qty").notNullable();

@@ -21,6 +21,7 @@ class CustomersSchema extends Schema {
       table.string("shipping_city", 80);
       table.string("shipping_state", 80);
       table.string("shipping_country", 80);
+      table.boolean("is_updated").defaultTo("true");
       table.timestamps();
     });
   }

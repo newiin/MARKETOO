@@ -18,39 +18,13 @@
   <section>
     <div class="feature_product_wrapper">
       <div class="section_heading">
-        <h2>Features Products</h2>
+        <h2>Latest Products</h2>
         <div class="ui divider"></div>
       </div>
 
       <div class="ui equal width aligned  grid top_seller">
         <div class="row">
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  button add_to_class">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @each(product in newest_products)
           <div class="column">
             <div class="ui special cards">
               <div class="card">
@@ -69,71 +43,20 @@
                   <img src="./images/team.jpg" />
                 </div>
                 <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
+                  <div><a class="ui small header category" href="/product/{{product.slug}}">{{product.title}}</a></div>
                   <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
+                    <a href="#">
+                      <span> {{product.subcategory.name}}</span>
                       <i class="angle right icon"></i></a>
                   </div>
-                  <div class="price">$ 22</div>
+                  <div class="price">$ {{product.price}}</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  add_to_class button">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  add_to_class button">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endeach
+
+
         </div>
 
       </div>
@@ -173,6 +96,7 @@
 
       <div class="ui equal width aligned  grid top_seller">
         <div class="row">
+          @each(product in featured_products)
           <div class="column">
             <div class="ui special cards">
               <div class="card">
@@ -180,7 +104,9 @@
                   <div class="ui dimmer">
                     <div class="content">
                       <div class="center">
-                        <div class="ui  button add_to_class">
+
+                        <div class="ui button add_product_to_card" data-product_id="{{product.id}}"
+                          style="background-color:#8bc34a;color:#fff">
                           Add To Cart
                         </div>
                       </div>
@@ -189,98 +115,18 @@
                   <img src="./images/team.jpg" />
                 </div>
                 <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
+                  <div><a class="ui small header category" href="/product/{{product.slug}}">{{product.title}}</a></div>
                   <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
+                    <a href="#">
+                      <span> {{product.subcategory.name}}</span>
                       <i class="angle right icon"></i></a>
                   </div>
-                  <div class="price">$ 22</div>
+                  <div class="price">$ {{product.price}}</div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  button add_to_class">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  add_to_class button">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="ui special cards">
-              <div class="card">
-                <div class="blurring dimmable image">
-                  <div class="ui dimmer">
-                    <div class="content">
-                      <div class="center">
-                        <div class="ui  add_to_class button">
-                          Add To Cart
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <img src="./images/team.jpg" />
-                </div>
-                <div class="content">
-                  <div><a class="ui small header category">Team Fu</a></div>
-                  <div class="title">
-                    <a href="">
-                      <span> Prenium Woods</span>
-                      <i class="angle right icon"></i></a>
-                  </div>
-                  <div class="price">$ 22</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          @endeach
         </div>
 
       </div>

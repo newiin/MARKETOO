@@ -7,13 +7,8 @@ class IsCustomer {
     try {
       userable_type = await auth.user.userable_type;
     } catch (error) {
-      session.flash({
-        notification: {
-          type: "negative",
-          message: `You try to gey access to a forbitten area`
-        }
-      });
-      response.redirect("/");
+      auth.logout();
+      response.route("login.create");
     }
     if (userable_type == "sellers") {
       session.flash({

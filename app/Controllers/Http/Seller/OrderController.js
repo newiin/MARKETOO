@@ -10,8 +10,9 @@ class OrderController {
         .with("order.customer")
 
         .fetch();
-      response.send(orders);
-      // return view.render("seller.oders");
+      response.status(200).send(orders);
+
+      return view.render("seller.orders", { orders: orders.toJSON() });
     } catch (error) {
       console.log(error);
     }

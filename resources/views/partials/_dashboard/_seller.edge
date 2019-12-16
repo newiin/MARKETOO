@@ -1,6 +1,6 @@
 <div class="ui vertical pointing menu dashbord_menu">
     <a class="item {{url=="/seller/dashboard"? "active":""}}" href="{{route('seller.dashboard')}}">
-        My Orders Status
+        Dashboard
     </a>
 
     <a class="item {{url=="/seller/dashboard/profile/edit"? "active":""}}" href="{{route('seller.edit.profile')}}">
@@ -11,23 +11,10 @@
         href="{{route('seller.product.index')}}">
         Product Management
     </a>
-    <a class="item">
-        Home
+    <a class="item {{url=="/seller/dashboard/orders" ? "active":""}} {{urlpath ? " active":""}}"
+        href="{{route('seller.orders')}}">
+        My Orders
     </a>
-    <a class="item">
-        Messages
-    </a>
-    <a class="item">
-        Friends
-    </a>
-    <a class="item">
-        Home
-    </a>
-    <a class="item">
-        Messages
-    </a>
-    <a class="item ">
-        Friends
-    </a>
+
 
 </div>

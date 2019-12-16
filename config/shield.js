@@ -137,7 +137,7 @@ module.exports = {
       "/seller/register",
       "/seller/dashboard/product/create/image/:id",
       "/product/whishlist/add/id",
-      "/category/:slug"
+      "/products/:filter"
     ],
     cookieOptions: {
       httpOnly: false,
